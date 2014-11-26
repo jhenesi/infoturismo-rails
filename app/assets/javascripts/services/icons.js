@@ -1,0 +1,52 @@
+'use strict';
+
+angular.module('infoturismoApp').constant('icons', {
+	general: 'fa fa-globe',
+	acceso: 'fa fa-taxi',
+	accesoSvg: '\uf1ba',
+	atractivos: 'fa fa-map-marker',
+	atractivosSvg: '\uf041',
+	consumo: 'fa fa-coffee',
+	consumoSvg:'\uf0f4',
+	costo: 'fa fa-dollar',
+	costoSvg: '\uf155',
+	experiencia: 'fa fa-plane',
+	experienciaSvg: '\uf1d8',
+	imagen: 'fa fa-bookmark',
+	imagenSvg: '\uf02e',
+	satisfaccion: 'fa fa-thumbs-o-up',
+	satisfaccionSvg: '\uf164',
+	hospedaje: 'fa-building',
+	alimentacion: 'fa-cutlery',
+	servicioExcursion: 'fa-binoculars',
+	transporteEstacionamiento: 'fa-bus',
+	pieChart: 'fa-pie-chart',
+	menu: {
+		general: 'fa fa-fw fa-globe',
+		acceso: 'fa fa-fw fa-taxi',
+ 		atractivos: 'fa fa-fw fa-map-marker',
+ 		consumo: 'fa fa-fw fa-coffee',
+ 		costo: 'fa fa-fw fa-dollar',
+ 		experiencia: 'fa fa-fw fa-plane',
+ 		imagen: 'fa fa-fw fa-bookmark',
+ 		satisfaccion: 'fa fa-fw fa-thumbs-o-up',
+ 		cerrarSesion: 'fa fa-fw fa-power-off',
+ 		filtros: 'fa fa-filter',
+ 		usuario: 'fa fa-user'
+	},
+	filterMenu: {
+		motivo: 'fa fa-fw fa-briefcase',
+		transporte: 'fa fa-fw fa-car',
+		genero: 'fa fa-fw fa-female',
+		edad: 'fa fa-fw fa-child',
+		compania: 'fa fa-fw fa-users',
+		ultima: 'fa fa-fw fa-calendar-o',
+		frecuencia: 'fa fa-fw fa-calendar',
+		ocupacion: 'fa fa-fw fa-pencil-square-o',
+		estancia: 'fa fa-fw fa-clock-o',
+		residencia: 'fa fa-fw fa-compass',
+		grado: 'fa fa-fw fa-graduation-cap',
+		oportunidad: 'fa fa-fw fa-reply',
+		gasto: 'fa fa-fw fa-money'
+	}
+});

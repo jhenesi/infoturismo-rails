@@ -1,0 +1,7 @@
+asset 'angular'
+asset 'angular-route'
+asset 'angular-spinner'
+asset 'es5-shim'
+asset 'bootstrap'
+asset 'font-awesome'
+asset 'highcharts'

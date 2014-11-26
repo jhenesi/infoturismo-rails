@@ -1,0 +1,9 @@
+<div id="wrapper" ng-controller="LayoutCtrl" ng-class="{'': !isFiltersToggled, 'toggled': isFiltersToggled}">
+	<!-- Navigation -->
+	<div ng-include="'partials/navigation.html'"></div>
+	<!-- Sidebar -->
+	<div ng-include="'partials/filter-menu.html'"></div>
+	<!-- Content -->
+	<div id="page-wrapper" ng-view="">
+	</div>
+</div>

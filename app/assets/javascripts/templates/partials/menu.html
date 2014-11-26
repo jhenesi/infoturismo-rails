@@ -1,0 +1,7 @@
+<div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav side-nav">
+        <li ng-class="{{item.activeClass}}" ng-repeat="item in menuItems">
+            <a href="{{item.href}}"><i class="{{item.icon}}"></i> <span ng-bind-html="item.label"></span></a>
+        </li>
+    </ul>
+</div>

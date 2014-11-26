@@ -1,34 +1,22 @@
-# SQL Server (2005 or higher recommended)
-#
-# Install the adapters and driver
-#   gem install tiny_tds
-#   gem install activerecord-sqlserver-adapter
-#
-# Ensure the activerecord adapter and db driver gems are defined in your Gemfile
-#   gem 'tiny_tds'
-#   gem 'activerecord-sqlserver-adapter'
-#
-# You should make sure freetds is configured correctly first.
-# freetds.conf contains host/port/protocol_versions settings.
-# http://freetds.schemamania.org/userguide/freetdsconf.htm
-#
-# A typical Microsoft server
-#   [mssql]
-#   host = mssqlserver.yourdomain.com
-#   port = 1433
-#   tds version = 7.1
-
-# If you can connect with "tsql -S servername", your basic FreeTDS installation is working.
-# 'man tsql' for more info
-# Set timeout to a larger number if valid queries against a live db fail
-
 development:
-  adapter: sqlserver
-  encoding: utf8
-  reconnect: false
-  database: infoturismo
-  username: ruby_u
-  password: ruby_u_pass
-  timeout: 25
-  dataserver: NVK-MOB-0061\mssqlserver
-  port: 1433
+  adapter: sqlite3
+  database: db/infoturismo.sqlite3
+  pool: 5
+  timeout: 5000
+
+# development:
+#   adapter: sqlserver
+#   encoding: utf8
+#   reconnect: false
+#   database: infoturismo
+#   username: ruby_u
+#   password: ruby_u_pass
+#   timeout: 25
+#   dataserver: NEYOY-W7U-VM-PC
+#   port: 1433
+
+# development:
+#   adapter: sqlserver
+#   mode: ODBC
+#   dsn: Driver={SQL Server};Server=uteow8i6hq.database.windows.net;Uid=usr_db_infoturismo_owner@uteow8i6hq.database.windows.net;Pwd=Info-2014;Database=db_infoturismo_survey
+#   azure: true

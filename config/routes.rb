@@ -4,6 +4,7 @@ Infoturismo::Application.routes.draw do
   resources :acceso do
   	collection do
   		get 'senalamiento'
+      get 'test'
   	end
   end
   resources :atractivos

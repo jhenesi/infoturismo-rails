@@ -129,4 +129,9 @@ class AccesoController < ApplicationController
 
 		render json: data, status: 200
 	end
+
+	def test
+		data = SurveyResult.all
+		render json: data, status: 200
+	end
 end

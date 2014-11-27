@@ -178,7 +178,7 @@ getEstacionamientoCalidadOverviewData: function(filter) {
 		getSenalamientoOverviewData: function(filter) {
 			return $http.get('/acceso/senalamiento',{
 				params: {
-					groupBy: filter
+					group_by: filter
 				}
 			});
 

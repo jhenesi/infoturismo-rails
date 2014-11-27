@@ -914,11 +914,17 @@ angular.module('infoturismoApp').controller('SecondCtrl', [
         	.error(function(data, status, headers, config) {
          });
 
+         var chartTitles = {
+            motivo: labels.filtroMotivo,
+            transporte: labels.filtroTransporte,
+            genero: labels.filtroGenero,
+            compania: labels.filtroCompania,
+            ocupacion: labels.filtroOcupacion
+         }
+
         $scope.$watch('filters', function() {
 			if($scope.filters.filterBy !== "") {
         		$scope.template = 'partials/second-column.html';
-
-            console.log($scope.filters.filterBy)
 
         		config.getData($scope.filters.filterBy)
         			.success(function(data, status, headers, config) {
@@ -948,7 +954,7 @@ angular.module('infoturismoApp').controller('SecondCtrl', [
 			          		categories: categories,
 	                		series: chartData
 			          	};
-			          	$scope.groupedTitle = "Agrupado por Motivo de Viaje";
+			          	$scope.groupedTitle = chartTitles[$scope.filters.filterBy];
         			});
         	}
          	else {

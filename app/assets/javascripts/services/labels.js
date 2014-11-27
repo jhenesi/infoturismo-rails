@@ -103,6 +103,12 @@ angular.module('infoturismoApp').service('labels',['$sce', function($sce) {
 		residencia: $sce.trustAsHtml('Lugar de residencia'),
 		grado: $sce.trustAsHtml('Grado Escolar'),
 		oportunidad: $sce.trustAsHtml('Oportunidad de regresar'),
-		gasto: $sce.trustAsHtml('Gasto')
+		gasto: $sce.trustAsHtml('Gasto'),
+
+		filtroMotivo: 'Agrupado por Motivo de Viaje',
+		filtroTransporte: 'Agrupado por Medio de Transporte',
+		filtroGenero: 'Agrupado por Genero',
+		filtroCompania: 'Agrupado por Con Quién Viaja',
+		filtroOcupacion: 'Agrupado por Ocupación'
  	};
 }]);

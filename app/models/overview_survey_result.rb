@@ -1,38 +1,10 @@
 class OverviewSurveyResult < ActiveRecord::Base
+  include ApplicationHelper
+
   self.table_name = 'tbl_Results_v1'
   self.primary_key = 'id'
 
   def self.get_data
-  	 	data = [{
-  		:Clave => "Acceso",
-		:Nombre => "Acceso al Destino e Infraestructura",
-		:Promedio => 0
-  	},{
-		:Clave => "Atractivos",
-		:Nombre => "Atractivos y Oferta Turística",
-		:Promedio => 0
-	},{
-		:Clave => "Consumo",
-		:Nombre => "Consumo de Servicios",
-		:Promedio => 0
-	},{
-		:Clave => "Costo",
-		:Nombre => "Costo",
-		:Promedio => 0
-	},{
-		:Clave => "Experiencia",
-		:Nombre => "Experiencia de Viaje",
-		:Promedio => 0
-	},{
-		:Clave => "Imagen",
-		:Nombre => "Imagen",
-		:Promedio => 0
-	},{
-		:Clave => "Satisfaccion",
-		:Nombre => "Satisfacción y Recomendación",
-		:Promedio => 0
-	}]
-    
 	sql = 'SELECT 
 		ROUND(((AVG("A2(A201)") + 
 		  AVG("A2(A202)") + 
@@ -85,14 +57,16 @@ class OverviewSurveyResult < ActiveRecord::Base
 		  AVG("G17(G1705)"))/(5*1.0)), 1) as satisfaccion_average
 		FROM "tbl_Results_v1"'
 
+	data = []
+
 	OverviewSurveyResult.find_by_sql(sql).each do |row|
-		data[0]['Promedio'] = row.acceso_average
-		data[1]['Promedio'] = row.atractivos_average
-		data[2]['Promedio'] = row.consumo_average
-		data[3]['Promedio'] = row.costo_average
-		data[4]['Promedio'] = row.experiencia_average
-		data[5]['Promedio'] = row.imagen_average
-		data[6]['Promedio'] = row.satisfaccion_average
+		data << ReactivoOverviewData.new("Acceso", "Acceso al Destino e Infraestructura", row.acceso_average)
+		data << ReactivoOverviewData.new("Atractivos", "Atractivos y Oferta Turística", row.atractivos_average)
+		data << ReactivoOverviewData.new("Consumo", "Consumo de Servicios", row.consumo_average)
+		data << ReactivoOverviewData.new("Costo", "Costo", row.costo_average)
+		data << ReactivoOverviewData.new("Experiencia", "Experiencia de Viaje", row.experiencia_average)
+		data << ReactivoOverviewData.new("Imagen", "Imagen", row.imagen_average)
+		data << ReactivoOverviewData.new("Satisfaccion","Satisfacción y Recomendación", row.satisfaccion_average)
 	end
 
 	data

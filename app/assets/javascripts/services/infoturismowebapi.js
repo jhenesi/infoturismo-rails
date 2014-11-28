@@ -1203,30 +1203,6 @@ getEstacionamientoCalidadOverviewData: function(filter) {
 				return routes[filter];
 			}
 		},
-		
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		getConsumoOverviewData: function() {
 			return $http.get('/consumo');
 		},

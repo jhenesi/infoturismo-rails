@@ -1,4 +1,6 @@
 class AccesoController < ApplicationController
+	include ApplicationHelper
+
 	def index
 		render json: AccesoSurveyResult.get_data, status: 200
 	end
@@ -10,6 +12,11 @@ class AccesoController < ApplicationController
 			data = AccesoSurveyResult.get_senalamiento_data_grouped(params[:group_by])
 		end
 
+		render json: data, status: 200
+	end
+
+	def test
+		data = SCORES
 		render json: data, status: 200
 	end
 end

@@ -919,7 +919,8 @@ angular.module('infoturismoApp').controller('SecondCtrl', [
             transporte: labels.filtroTransporte,
             genero: labels.filtroGenero,
             compania: labels.filtroCompania,
-            ocupacion: labels.filtroOcupacion
+            ocupacion: labels.filtroOcupacion,
+            grado: labels.filtroGrado
          }
 
         $scope.$watch('filters', function() {

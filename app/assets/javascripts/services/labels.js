@@ -109,6 +109,7 @@ angular.module('infoturismoApp').service('labels',['$sce', function($sce) {
 		filtroTransporte: 'Agrupado por Medio de Transporte',
 		filtroGenero: 'Agrupado por Genero',
 		filtroCompania: 'Agrupado por Con Quién Viaja',
-		filtroOcupacion: 'Agrupado por Ocupación'
+		filtroOcupacion: 'Agrupado por Ocupación',
+		filtroGrado: 'Agrupado por Grado Escolar'
  	};
 }]);

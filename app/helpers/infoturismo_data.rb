@@ -209,11 +209,11 @@ module InfoturismoData
 	  				:clave => 'Especialidad',
 	  				:nombre => 'Especialidad'
 	  			),
-	  			'A10' => OpenStruct.new(
+	  			'10' => OpenStruct.new(
 	  				:clave => 'MasDoc',
 	  				:nombre => 'Maestría o Doctorado'
 	  			),
-	  			'A10' => OpenStruct.new(
+	  			'11' => OpenStruct.new(
 	  				:clave => 'PosDoc',
 	  				:nombre => 'Postdoctorado'
 	  			)

@@ -317,7 +317,7 @@ angular.module('infoturismoApp').controller('FirstCtrl', [
 		config.getData()
       		.success(function(data, status, headers, config) {
           		var categories, values, serie;
-
+          		
 	          	categories = [];
 
 	          	angular.forEach(data, function(item, i) {

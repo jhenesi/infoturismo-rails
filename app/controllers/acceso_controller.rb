@@ -16,7 +16,7 @@ class AccesoController < ApplicationController
 	end
 
 	def test
-		data = SCORES
+		data = AccesoSurveyResult.where('A2(A201)' => 8)
 		render json: data, status: 200
 	end
 end

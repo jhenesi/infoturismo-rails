@@ -4,14 +4,16 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlserver as the database for Active Record
-#gem 'activerecord-sqlserver-adapter'
+gem 'activerecord-sqlserver-adapter'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+#gem 'sqlite3'
 
-gem 'ruby-odbc'
+gem 'tiny_tds', '0.6.2'
 
-gem 'yaml_db'
+#gem 'ruby-odbc'
+
+#gem 'yaml_db'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

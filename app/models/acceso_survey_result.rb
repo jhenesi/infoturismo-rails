@@ -29,16 +29,22 @@ class AccesoSurveyResult < ActiveRecord::Base
 
   	def self.get_senalamiento_data()
 	  	sql = 
-	  		'SELECT COUNT(*) as conteo,
+	  		"SELECT COUNT(*) as conteo,
 	  		 CASE
-	      		WHEN "A2(A201)" >= 1 AND "A2(A201)" <= 2 THEN "muy_baja"
-	           	WHEN "A2(A201)" >= 3 AND "A2(A201)" <= 4 THEN "baja"
-	           	WHEN "A2(A201)" >= 5 AND "A2(A201)" <= 6 THEN "media"
-	           	WHEN "A2(A201)" >= 7 AND "A2(A201)" <= 8 THEN "alta"
-	           	WHEN "A2(A201)" >= 9 AND "A2(A201)" <= 10 THEN "muy_alta"
+	      		WHEN [A2(A201)] >= 1 AND [A2(A201)] <= 2 THEN 'muy_baja'
+	           	WHEN [A2(A201)] >= 3 AND [A2(A201)] <= 4 THEN 'baja'
+	           	WHEN [A2(A201)] >= 5 AND [A2(A201)] <= 6 THEN 'media'
+	           	WHEN [A2(A201)] >= 7 AND [A2(A201)] <= 8 THEN 'alta'
+	           	WHEN [A2(A201)] >= 9 AND [A2(A201)] <= 10 THEN 'muy_alta'
 	         END as calificacion
-			 FROM "tbl_Results_v1"
-			 GROUP BY calificacion'
+			 FROM tbl_Results_v1
+			 GROUP BY CASE
+	      		WHEN [A2(A201)] >= 1 AND [A2(A201)] <= 2 THEN 'muy_baja'
+	           	WHEN [A2(A201)] >= 3 AND [A2(A201)] <= 4 THEN 'baja'
+	           	WHEN [A2(A201)] >= 5 AND [A2(A201)] <= 6 THEN 'media'
+	           	WHEN [A2(A201)] >= 7 AND [A2(A201)] <= 8 THEN 'alta'
+	           	WHEN [A2(A201)] >= 9 AND [A2(A201)] <= 10 THEN 'muy_alta'
+	         END"
 
 		data = []
 
@@ -53,18 +59,25 @@ class AccesoSurveyResult < ActiveRecord::Base
   	end
 
   	def self.get_senalamiento_data_grouped(group_by)
+  		
 	  	sql = 
 	  		"SELECT COUNT(*) as conteo,
 	  		 CASE
-	      		WHEN \"A2(A201)\" >= 1 AND \"A2(A201)\" <= 2 THEN \"muy_baja\"
-	           	WHEN \"A2(A201)\" >= 3 AND \"A2(A201)\" <= 4 THEN \"baja\"
-	           	WHEN \"A2(A201)\" >= 5 AND \"A2(A201)\" <= 6 THEN \"media\"
-	           	WHEN \"A2(A201)\" >= 9 AND \"A2(A201)\" <= 10 THEN \"muy_alta\"
-	           	WHEN \"A2(A201)\" >= 7 AND \"A2(A201)\" <= 8 THEN \"alta\"
+	      		WHEN [A2(A201)] >= 1 AND [A2(A201)] <= 2 THEN 'muy_baja'
+	           	WHEN [A2(A201)] >= 3 AND [A2(A201)] <= 4 THEN 'baja'
+	           	WHEN [A2(A201)] >= 5 AND [A2(A201)] <= 6 THEN 'media'
+	           	WHEN [A2(A201)] >= 9 AND [A2(A201)] <= 10 THEN 'muy_alta'
+	           	WHEN [A2(A201)] >= 7 AND [A2(A201)] <= 8 THEN 'alta'
 	         END as calificacion,
 	         #{FILTER_COLUMNS[group_by]} as filtro
-			 FROM \"tbl_Results_v1\"
-			 GROUP BY calificacion, filtro"
+			 FROM tbl_Results_v1
+			 GROUP BY CASE
+	      		WHEN [A2(A201)] >= 1 AND [A2(A201)] <= 2 THEN 'muy_baja'
+	           	WHEN [A2(A201)] >= 3 AND [A2(A201)] <= 4 THEN 'baja'
+	           	WHEN [A2(A201)] >= 5 AND [A2(A201)] <= 6 THEN 'media'
+	           	WHEN [A2(A201)] >= 9 AND [A2(A201)] <= 10 THEN 'muy_alta'
+	           	WHEN [A2(A201)] >= 7 AND [A2(A201)] <= 8 THEN 'alta'
+	         END, #{FILTER_COLUMNS[group_by]}"
 
 	 	data = {}
 

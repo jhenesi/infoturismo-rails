@@ -9,7 +9,7 @@ gem 'activerecord-sqlserver-adapter'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 
-gem 'tiny_tds', '0.6.2'
+#gem 'tiny_tds', '0.6.2'
 
 gem 'ruby-odbc'
 

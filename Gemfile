@@ -11,7 +11,7 @@ gem 'activerecord-sqlserver-adapter'
 
 gem 'tiny_tds', '0.6.2'
 
-#gem 'ruby-odbc'
+gem 'ruby-odbc'
 
 #gem 'yaml_db'
 

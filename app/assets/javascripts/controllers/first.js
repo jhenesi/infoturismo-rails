@@ -167,6 +167,8 @@ angular.module('infoturismoApp').controller('FirstCtrl', [
 	        	routes.consumo.transporteEstacionamiento.atencion.path;
 	      	transp.rutas['Disponibilidad del trasporte'] = 
 			routes.consumo.transporteEstacionamiento.disponibilidad.path;
+			transp.rutas['Disponibilidad de estacionamiento'] = 
+			routes.consumo.transporteEstacionamiento.disponibilidadEstacionamiento.path;
 
 
 			
@@ -183,9 +185,13 @@ angular.module('infoturismoApp').controller('FirstCtrl', [
 		    costo.breadcrumb = crumbs.getGeneral();		    
 		    costo.breadcrumb.addCrumb(crumbs.getCosto()),	
 
+		    costo.rutas['General'] = 		    	
+		    	routes.costo.general.path;
+		    costo.rutas['Transportacion'] = 		    	
+		    	routes.costo.transportacion.path;
 		    costo.rutas['Hospedaje'] = 		    	
 		    	routes.costo.hospedaje.path;			
-		    costo.rutas['Transportacion'] = 				
+		    costo.rutas['Transporte'] = 				
 		    	routes.costo.transporte.path;			
 		    costo.rutas['Alimentos y bebidas'] = 				
 		    	routes.costo.alimentos.path;			
@@ -213,6 +219,10 @@ angular.module('infoturismoApp').controller('FirstCtrl', [
 	        	routes.experiencia.experienciaViaje.obregon.path;
 	      	experienciaViaje.rutas['Hospitalidad de los residentes que no trabajan en la industria'] = 
 	        	routes.experiencia.experienciaViaje.hospitalidad.path;
+	      	experienciaViaje.rutas['Variedad de actividades recreativas'] = 
+	        	routes.experiencia.experienciaViaje.actividades.path;
+	      	experienciaViaje.rutas['Emocion de visitar este sitio'] = 
+	        	routes.experiencia.experienciaViaje.emocion.path;
 	      	experienciaViaje.rutas['Visitar los sitios naturales/culturales'] = 
 	        	routes.experiencia.experienciaViaje.naturales.path;
 	      	experienciaViaje.rutas['Ofrece una experiencia diferente'] = 

@@ -286,6 +286,15 @@ getHospedajeEleccion: function() {
                 addCrumb: addCrumb
             };
         },
+         getTransporteDisponibilidadEstacionamiento: function() {
+            return {
+                name: labels.transporteDisponibilidadEstacionamiento,
+                href: '',
+                icon: icons.pieChart,
+                addCrumb: addCrumb
+            };
+        },
+
 
 
         /*
@@ -365,6 +374,22 @@ getHospedajeEleccion: function() {
     	
 
         //Crumbs Costo
+        getCostoGeneral: function() {
+            return {
+                name: labels.costoGeneral,
+                href: routes.costo.general.path,
+                icon: icons.pieChart,
+                addCrumb: addCrumb
+            };
+        },
+        getCostoTransportacion: function() {
+            return {
+                name: labels.costoTransportacion,
+                href: routes.costo.transportacion.path,
+                icon: icons.pieChart,
+                addCrumb: addCrumb
+            };
+        },
     	getCosto: function() {
     		return {
     			name: labels.costo,
@@ -442,6 +467,22 @@ getHospedajeEleccion: function() {
         getExperienciaViajeHospitalidad: function() {
             return {
                 name: labels.experienciaViajehospitalidad,
+                href: '',
+                icon: icons.pieChart,
+                addCrumb: addCrumb
+            };
+        },
+        getExperienciaViajeActividades: function() {
+            return {
+                name: labels.experienciaViajeActividades,
+                href: '',
+                icon: icons.pieChart,
+                addCrumb: addCrumb
+            };
+        },
+        getExperienciaViajeEmocion: function() {
+            return {
+                name: labels.experienciaViajeEmocion,
                 href: '',
                 icon: icons.pieChart,
                 addCrumb: addCrumb

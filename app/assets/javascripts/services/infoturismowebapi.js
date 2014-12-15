@@ -11,170 +11,64 @@ angular.module('infoturismoApp').service('infoturismoWebApi', ['$http', function
 			return $http.get('/acceso');
 		},
 		getAlimentacionOverviewData: function() {
-			return $http.get(root +'/data/alimentacion.json');
+			return $http.get('/alimentacion');
 		},
 		getAlimentacionExperienciaOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/alimentacion/experiencia',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getAlimentacionCalidadOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/alimentacion/calidad',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getAlimentacionLimpiezaOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/alimentacion/limpieza',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
-
-
 		getExcursionOverviewData: function() {
-			return $http.get(root +'/data/excursion.json');
+			return $http.get('/servicios_excursion');
 		},
+
 		getTransporteOverviewData: function() {
-			return $http.get(root +'/data/transportes.json');
+			return $http.get('/transporte_estacionamiento');
 		},
-
-
-getEstacionamientoCalidadOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+		getEstacionamientoCalidadOverviewData: function(filter) {
+			return $http.get('/transporte_estacionamiento/calidad',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
-		
 		getEstacionamientoAtencionOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/transporte_estacionamiento/atencion',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getEstacionamientoDisponibilidadOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/transporte_estacionamiento/disponibilidad',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
-
+		getEstacionamientoDisponibilidadEstacionamientoOverviewData: function(filter) {
+			return $http.get('/transporte_estacionamiento/disponibilidad_estacionamiento',{
+				params: {
+					group_by: filter
+				}
+			});
+		},
 		getSenalamientoOverviewData: function(filter) {
 			return $http.get('/acceso/senalamiento',{
 				params: {
@@ -184,1206 +78,390 @@ getEstacionamientoCalidadOverviewData: function(filter) {
 
 		},
 		getAccesoOpcionesOverviewData: function(filter) {
-			var routes = {};
+			return $http.get('/acceso/opciones',{
+				params: {
+					group_by: filter
+				}
+			});
 
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
 		},
 		getCalidadInfraestructuraOverviewData: function(filter) {
-			var routes = {};
+			return $http.get('/acceso/calidad',{
+				params: {
+					group_by: filter
+				}
+			});
 
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
 		},
 		getMantenimientoOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/acceso/mantenimiento',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getAtencionOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/acceso/atencion',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
-
-
-
-
-
-
-
-
 		getAtractivosOverviewData: function(){
-			return $http.get(root +'/data/atractivos.json');
+			return $http.get('/atractivos');
 		},
 		getServiciosOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/atractivos/atractivosServicios',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getConservacionOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+				return $http.get('/atractivos/atractivosConservacion',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getAtractivosVariedadOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/atractivos/atractivosVariedad',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getAtractivosCalidadOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/atractivos/atractivosCalidad',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getAtractivosCulturalesOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/atractivos/atractivosCulturales',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getAtractivosNaturalesOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/atractivos/atractivosNaturales',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
-
-
-
-
-
-
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		getCostoOverviewData: function() {
-			return $http.get(root +'/data/costo.json');
+			return $http.get('/costo');
+		},
+		getCostoGeneralOverviewData: function(filter) {
+			return $http.get('/costo/general',{
+				params: {
+					group_by: filter
+				}
+			});
+		},
+		getCostoTransportacionOverviewData: function(filter) {
+			return $http.get('/costo/transportacion',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getCostoHospedajeOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/costo/hospedaje',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getCostoTransporteOverviewData: function(filter) {
-			var routes = {};
-
-		routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/costo/transporte',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getCostoAlimentosOverviewData: function(filter) {
-			var routes = {};
-
-		routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/costo/alimentos',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getCostoExcursionOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/costo/excursion',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getCostoEstacionamientoOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/costo/estacionamiento',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getExperienciaOverviewData: function() {
-			return $http.get(root +'/data/experiencia-resumen.json');
+			return $http.get('/experiencia');
 		},
 		getExperienciaViajeOverviewData: function() {
-			return $http.get(root +'/data/experienciaViaje.json');
+			return $http.get('/experiencia/experienciaViaje');
 		},
 		getExperienciaViajeObregonOverviewData: function(filter) {
-			var routes = {};
-
-		routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/experiencia/experienciaViaje/obregon',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getExperienciaViajeHospitalidadOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/experiencia/experienciaViaje/hospitalidad',{
+				params: {
+					group_by: filter
+				}
+			});
+		},
+		getExperienciaViajeActividadesOverviewData: function(filter) {
+			return $http.get('/experiencia/experienciaViaje/actividades',{
+				params: {
+					group_by: filter
+				}
+			});
+		},
+		getExperienciaViajeEmocionOverviewData: function(filter) {
+			return $http.get('/experiencia/experienciaViaje/emocion',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getExperienciaViajeNaturalesOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/experiencia/experienciaViaje/naturales',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getExperienciaViajeDiferenteOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/experiencia/experienciaViaje/diferente',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getExperienciaViajeDisponibilidadOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/experiencia/experienciaViaje/disponibilidad',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getFactoresOverviewData: function() {
-			return $http.get(root +'/data/factores.json');
+			return $http.get('/experiencia/factores');
 		},
 		getFactoresRecomendacionesOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/experiencia/factores/recomendaciones',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getFactoresConocimientoOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/experiencia/factores/conocimiento',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getFactoresCercaniaOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/experiencia/factores/cercania',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getFactoresPreciosOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/experiencia/factores/precios',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getFactoresDisponibilidadOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/experiencia/factores/disponibilidad',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getFactoresDiversidadOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/experiencia/factores/diversidad',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getFactoresInteresOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/experiencia/factores/interes',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getFactoresSaludOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/experiencia/factores/salud',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getFactoresTrabajoOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/experiencia/factores/trabajo',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getFactoresOtroOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/experiencia/factores/otro',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getImagenOverviewData: function() {
-			return $http.get(root +'/data/imagen.json');
+			return $http.get('imagen');
 		},
 
 
 		getImagenPercepcionOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/imagen/percepcion',{
+				params: {
+					group_by: filter
+				}
+			});
+	
 		},
 		getImagenSitiosOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/imagen/sitios',{
+				params: {
+					group_by: filter
+				}
+			});
+	
 		},
 		getImagenAmbulantesOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/imagen/ambulantes',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getImagenTransitoOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/imagen/transito',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getImagenLimpiezaOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/imagen/limpieza',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
-		
-		
 		getSatisfaccionOverviewData: function() {
-			return $http.get(root +'/data/satisfaccion.json');
+			return $http.get('/satisfaccion');
 		},
 		getNivelSatisfaccionOverviewData: function(filter) {
-			var routes = {};
+			return $http.get('/satisfaccion/nivel',{
+				params: {
+					group_by: filter
+				}
+			});
+	
 
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
 		},
 		getExpectativasSatisfaccionOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/satisfaccion/expectativas',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getDispocisionSatisfaccionOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/satisfaccion/disposicion',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		
 		getRecomendacionSatisfaccionOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/satisfaccion/recomendacion',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getConsumoOverviewData: function() {
 			return $http.get('/consumo');
 		},
 		getHospedajeOverviewData: function() {
-			return $http.get(root +'/data/hospedaje.json');
+			return $http.get('/hospedaje');
 		},
 		getHospedajePercepcionOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/hospedaje/percepcion',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getHospedajeLimpiezaOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/hospedaje/limpieza',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getHospedajeAtencionOverviewData: function(filter) {
-			var routes = {};
-
-		routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/hospedaje/atencion',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getHospedajeEleccionOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/hospedaje/facilidadeleccion',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getExcursionServiciosOverviewData: function(filter) {
-			var routes = {};
-
-		routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/servicios_excursion/servicios',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getExcursionCalidadOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-			
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
+			return $http.get('/servicios_excursion/calidad',{
+				params: {
+					group_by: filter
+				}
+			});
 		},
 		getExcursionAtencionOverviewData: function(filter) {
-			var routes = {};
-
-			routes['default'] = $http.get(root +'/data/senalamiento.json');
-			routes['motivo'] = $http.get(root +'/data/senalamiento-motivo.json');
-			routes['medio'] = $http.get(root +'/data/transporte.json');
-			routes['genero'] = $http.get(root +'/data/genero.json');
-			routes['edad'] = $http.get(root +'/data/edad.json');
-			routes['quien'] = $http.get(root +'/data/con_quien_viaja.json');
-			routes['ultima'] = $http.get(root +'/data/ultimaVisita.json');
-			routes['frecuencia'] = $http.get(root +'/data/frecuencia.json');
-			routes['ocupacion'] = $http.get(root +'/data/ocupacion.json');
-			routes['duracion'] = $http.get(root +'/data/duracion.json');
-			routes['residencia'] = $http.get(root +'/data/residencia.json');
-			routes['grado'] = $http.get(root +'/data/grado.json');
-			routes['oportunidad'] = $http.get(root +'/data/oportunidad.json');
-			routes['gasto'] = $http.get(root +'/data/gastos.json');
-
-			if(filter == "" || filter == null){
-				return routes['default'];
-			}
-			else {
-				return routes[filter];
-			}
-		},
-		
-		
+				return $http.get('/servicios_excursion/atencion',{
+				params: {
+					group_by: filter
+				}
+			});
+		}
 	};
 }]);

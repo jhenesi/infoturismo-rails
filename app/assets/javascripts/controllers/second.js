@@ -414,10 +414,56 @@ angular.module('infoturismoApp').controller('SecondCtrl', [
                .addCrumb(crumbs.getTransporteDisponibilidad());
 
 
+               config['/consumo/transporteEstacionamiento/disponibilidadEstacionamiento'] = {
+               title: labels.transporteDisponibilidadEstacionamiento,
+               icon: icons.pieChart,
+               getData: infoturismoWebApi.getEstacionamientoDisponibilidadEstacionamientoOverviewData
+            }
+
+            var transporteDisponibilidadEstacionamiento = config['/consumo/transporteEstacionamiento/disponibilidadEstacionamiento'];
+
+            transporteDisponibilidadEstacionamiento.breadcrumb =
+               crumbs.getGeneral();
+
+            transporteDisponibilidadEstacionamiento.breadcrumb
+            .addCrumb(crumbs.getConsumo())
+               .addCrumb(crumbs.getTransporte())
+               .addCrumb(crumbs.getTransporteDisponibilidadEstacionamiento());
+
 
 
 
    				//Costo
+         config['/costo/general'] = {
+            title: labels.costoGeneral,
+            icon: icons.pieChart,
+               getData: infoturismoWebApi.getCostoGeneralOverviewData
+         }
+
+         var costoGeneral = config['/costo/general'];
+
+         costoGeneral.breadcrumb = 
+            crumbs.getGeneral();
+                  
+            costoGeneral.breadcrumb
+               .addCrumb(crumbs.getCosto())
+               .addCrumb(crumbs.getCostoGeneral());
+
+         config['/costo/transportacion'] = {
+            title: labels.costoTransportacion,
+            icon: icons.pieChart,
+               getData: infoturismoWebApi.getCostoTransportacionOverviewData
+         }
+
+         var costoTransportacion = config['/costo/transportacion'];
+
+         costoTransportacion.breadcrumb = 
+            crumbs.getGeneral();
+                  
+            costoTransportacion.breadcrumb
+               .addCrumb(crumbs.getCosto())
+               .addCrumb(crumbs.getCostoTransportacion());
+
    			config['/costo/hospedaje'] = {
 				title: labels.costoHospedaje,
 				icon: icons.pieChart,
@@ -526,7 +572,40 @@ angular.module('infoturismoApp').controller('SecondCtrl', [
    				.addCrumb(crumbs.getExperienciaViaje())
    				.addCrumb(crumbs.getExperienciaViajeHospitalidad());
 
-   			config['/experiencia/experienciaViaje/naturales'] = {
+   			config['/experiencia/experienciaViaje/actividades'] = {
+               title: labels.experienciaViajeActividades,
+               icon: icons.pieChart,
+               getData: infoturismoWebApi.getExperienciaViajeActividadesOverviewData
+            }
+
+            var experienciaViajeActividades = config['/experiencia/experienciaViaje/actividades'];
+
+            experienciaViajeActividades.breadcrumb =
+               crumbs.getGeneral();
+
+            experienciaViajeActividades.breadcrumb
+            .addCrumb(crumbs.getExperiencia())
+               .addCrumb(crumbs.getExperienciaViaje())
+               .addCrumb(crumbs.getExperienciaViajeActividades());
+
+
+         config['/experiencia/experienciaViaje/emocion'] = {
+               title: labels.experienciaViajeEmocion,
+               icon: icons.pieChart,
+               getData: infoturismoWebApi.getExperienciaViajeEmocionOverviewData
+            }
+
+            var experienciaViajeEmocion = config['/experiencia/experienciaViaje/emocion'];
+
+            experienciaViajeEmocion.breadcrumb =
+               crumbs.getGeneral();
+
+            experienciaViajeEmocion.breadcrumb
+            .addCrumb(crumbs.getExperiencia())
+               .addCrumb(crumbs.getExperienciaViaje())
+               .addCrumb(crumbs.getExperienciaViajeEmocion());
+
+            config['/experiencia/experienciaViaje/naturales'] = {
    				title: labels.experienciaViajeNaturales,
    				icon: icons.pieChart,
    				getData: infoturismoWebApi.getExperienciaViajeNaturalesOverviewData

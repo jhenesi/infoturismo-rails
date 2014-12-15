@@ -54,6 +54,12 @@ angular.module('infoturismoApp').constant('routes', {
 		costo: {
 			path: '#/costo',
 			
+				general: {
+					path: '#/costo/general'
+				},
+				transportacion: {
+					path: '#/costo/transportacion'
+				},
 				hospedaje: {
 					path: '#/costo/hospedaje'
 				},
@@ -124,6 +130,9 @@ angular.module('infoturismoApp').constant('routes', {
   				},
   				disponibilidad: {
 					path: '#/consumo/transporteEstacionamiento/disponibilidad'
+  				},
+  				disponibilidadEstacionamiento:{
+					path: '#/consumo/transporteEstacionamiento/disponibilidadEstacionamiento'
   				}
 	  		}
 		},
@@ -139,6 +148,12 @@ angular.module('infoturismoApp').constant('routes', {
 				},
 				hospitalidad: {
 					path: '#/experiencia/experienciaViaje/hospitalidad'
+				},
+				actividades: {
+					path: '#/experiencia/experienciaViaje/actividades'
+				},
+				emocion: {
+					path: '#/experiencia/experienciaViaje/emocion'
 				},
 				naturales: {
 					path: '#/experiencia/experienciaViaje/naturales'

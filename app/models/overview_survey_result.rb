@@ -52,9 +52,9 @@ class OverviewSurveyResult < ActiveRecord::Base
 		  AVG(CAST([F16(F1605)] AS INT)))/(5*1.0)), 1) AS FLOAT) as imagen_average,
 		CAST(ROUND(((AVG([G17(G1701)]) +
 		  AVG([G17(G1702)]) +
-		  AVG([G17(G1703)]) +
+		 
 		  AVG([G17(G1704)]) +
-		  AVG([G17(G1705)]))/(5*1.0)), 1) AS FLOAT) as satisfaccion_average
+		  AVG([G17(G1705)]))/(4*1.0)), 1) AS FLOAT) as satisfaccion_average
 		FROM tbl_Results_v1'
 
 	data = []

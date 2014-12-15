@@ -142,9 +142,21 @@ angular
         templateUrl: 'views/second.html',
         controller: 'SecondCtrl'
       })
+      .when('/consumo/transporteEstacionamiento/disponibilidadEstacionamiento', {
+        templateUrl: 'views/second.html',
+        controller: 'SecondCtrl'
+      })
       .when('/costo', {
         templateUrl: 'views/first.html',
         controller: 'FirstCtrl'
+      })
+      .when('/costo/general', {
+        templateUrl: 'views/second.html',
+        controller: 'SecondCtrl'
+      })
+      .when('/costo/transportacion', {
+        templateUrl: 'views/second.html',
+        controller: 'SecondCtrl'
       })
       .when('/costo/hospedaje', {
         templateUrl: 'views/second.html',
@@ -183,6 +195,14 @@ angular
         controller: 'SecondCtrl'
       })
       .when('/experiencia/experienciaViaje/hospitalidad', {
+        templateUrl: 'views/second.html',
+        controller: 'SecondCtrl'
+      })
+      .when('/experiencia/experienciaViaje/actividades', {
+        templateUrl: 'views/second.html',
+        controller: 'SecondCtrl'
+      })
+      .when('/experiencia/experienciaViaje/emocion', {
         templateUrl: 'views/second.html',
         controller: 'SecondCtrl'
       })

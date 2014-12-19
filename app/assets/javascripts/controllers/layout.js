@@ -73,7 +73,7 @@ angular.module('infoturismoApp').controller('LayoutCtrl', [
 
         active[""] = 1;
 
-        $scope.isFiltersToggled = false;
+        $scope.isFiltersToggled = true;
     	$scope.activeItem = 1;
 
     	$scope.labels = labels;

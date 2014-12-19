@@ -66,14 +66,14 @@ angular.module('infoturismoApp').controller('SectionsCtrl', [
 				data: [{
 					clave: 'ExperienciaViaje',
 					type: 'panel-primary',
-					icon: icons.experiencia,
+					icon: icons.experienciaViaje,
 					go: routes.experiencia.experienciaViaje.path,
 					score: '',
 					category: '',
 				},{
 					clave: 'Factores',
 					type: 'panel-green',
-					icon: icons.experiencia,
+					icon: icons.factores,
 					go: routes.experiencia.factores.path,
 					score: '',
 					category: '',

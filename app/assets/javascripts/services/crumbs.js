@@ -452,7 +452,7 @@ getHospedajeEleccion: function() {
             return {
                 name: labels.experienciaViaje,
                 href: routes.experiencia.experienciaViaje.path,
-                icon: icons.experiencia,
+                icon: icons.experienciaViaje,
                 addCrumb: addCrumb
             };
         },
@@ -516,7 +516,7 @@ getHospedajeEleccion: function() {
             return {
                 name: labels.factores,
                 href: routes.experiencia.factores.path,
-                icon: icons.experiencia,
+                icon: icons.factores,
                 addCrumb: addCrumb
             };
         },

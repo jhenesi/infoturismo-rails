@@ -230,7 +230,7 @@ angular.module('infoturismoApp').controller('FirstCtrl', [
 	      	experienciaViaje.rutas['Disponibilidad de informacion turistica'] = 
 	        	routes.experiencia.experienciaViaje.disponibilidad.path;	
 
-	        	//factores
+	        	/*//factores
 	        config['/experiencia/factores'] = {
 				title: labels.factores,
         		icon: icons.experiencia,
@@ -264,7 +264,7 @@ angular.module('infoturismoApp').controller('FirstCtrl', [
 	        factores.rutas['Trabajo'] = 
 	        	routes.experiencia.factores.trabajo.path;
 	        factores.rutas['Otro'] = 
-	        	routes.experiencia.factores.otro.path;
+	        	routes.experiencia.factores.otro.path;*/
 
 	        //Imagen
 			config['/imagen'] = {

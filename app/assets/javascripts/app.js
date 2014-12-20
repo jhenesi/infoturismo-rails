@@ -187,8 +187,8 @@ angular
         controller: 'FirstCtrl'
       })
       .when('/experiencia/factores', {
-        templateUrl: 'views/first.html',
-        controller: 'FirstCtrl'
+        templateUrl: 'views/second.html',
+        controller: 'SecondCtrl'
       })
       .when('/experiencia/experienciaViaje/obregon', {
         templateUrl: 'views/second.html',
@@ -218,7 +218,7 @@ angular
         templateUrl: 'views/second.html',
         controller: 'SecondCtrl'
       })
-      .when('/experiencia/factores/recomendaciones', {
+      /*.when('/experiencia/factores/recomendaciones', {
         templateUrl: 'views/second.html',
         controller: 'SecondCtrl'
       })
@@ -257,7 +257,7 @@ angular
       .when('/experiencia/factores/otro', {
         templateUrl: 'views/second.html',
         controller: 'SecondCtrl'
-      })
+      })*/
    	  //Imagen
       .when('/imagen', {
         templateUrl: 'views/first.html',
@@ -310,28 +310,25 @@ angular
   })
 
   .config(function ($httpProvider) {
-    $httpProvider.interceptors.push(function($q, $rootScope, usSpinnerService) {
-      var endsWithHtml = new RegExp('.html$');
+    $httpProvider.interceptors.push(function($q, blockui) {
       return {
-        request: function(config) {
-          if(!endsWithHtml.test(config.url)){
-            usSpinnerService.spin('spinner-1');
-          }
-
+        'request': function(config) {
+          blockui.mask();
+        
           return config;
         },
 
-        response: function(response) {
-          if(!endsWithHtml.test(response.config.url)){
-            usSpinnerService.stop('spinner-1');
-          }
+        'response': function(response) {
+
+          blockui.demask();
+          
           return response;
         },
-
-        responseError: function(rejection) {
-          if (canRecover(rejection)) {
-            return responseOrNewPromise
-          }
+        
+        'responseError': function(rejection) {
+          blockui.demask();
+          blockui.showError();
+          
           return $q.reject(rejection);
         }
       };

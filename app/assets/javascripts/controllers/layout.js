@@ -131,7 +131,7 @@ angular.module('infoturismoApp').controller('LayoutCtrl', [
             icon: filterMenuIcons.ocupacion,
             label: labels.ocupacion,
             id:"filter-ocupacion"
-        },{
+        },/*{
             activeClass: "{active: activeFilterItem == 9}",
             icon: filterMenuIcons.estancia,
             label: labels.estancia,
@@ -141,7 +141,8 @@ angular.module('infoturismoApp').controller('LayoutCtrl', [
             icon: filterMenuIcons.residencia,
             label: labels.residencia,
             id:"filter-residencia"
-        },{
+        },*/
+        {
             activeClass: "{active: activeFilterItem == 11}",
             icon: filterMenuIcons.grado,
             label: labels.grado,
@@ -151,12 +152,12 @@ angular.module('infoturismoApp').controller('LayoutCtrl', [
             icon: filterMenuIcons.oportunidad,
             label: labels.oportunidad,
             id:"filter-oportunidad"
-        },{
+        }/*,{
             activeClass: "{active: activeFilterItem == 13}",
             icon: filterMenuIcons.gasto,
             label: labels.gasto,
             id:"filter-gasto"
-        }];
+        }*/];
 
         var filterActive = {};
 

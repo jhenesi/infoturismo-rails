@@ -7,7 +7,36 @@ module InfoturismoData
 		'genero' => 'H22',
 		'compania' => 'H21',
 		'ocupacion' => 'H24',
-		'grado' => 'H30'
+		'grado' => 'H30',
+		'edad' => 
+			"CASE
+			    WHEN [H23] >= 18 AND [H23] <= 29 THEN '18 - 29'
+			    WHEN [H23] >= 30 AND [H23] <= 39 THEN '30 - 39'
+			    WHEN [H23] >= 40 AND [H23] <= 49 THEN '40 - 49'
+			    WHEN [H23] >= 50 AND [H23] <= 59 THEN '50 - 59'
+			    WHEN [H23] >= 60 AND [H23] <= 69 THEN '60 - 69'
+			    WHEN [H23] >= 70 AND [H23] <= 79 THEN '70 - 79'
+			    WHEN [H23] >= 80 AND [H23] <= 89 THEN '80 - 89'
+			    WHEN [H23] >= 90 AND [H23] <= 99 THEN '90 - 99'
+			  END",
+		'oportunidad' => 
+			"CASE
+		    	WHEN [H31] = 'A1' THEN 'SI'
+		    	WHEN [H31] = 'A2' THEN 'NO'
+		  	END",
+		'ultima' => 
+			"CASE
+			    WHEN DATEDIFF(DAY,H19,CURRENT_TIMESTAMP) >= 0 AND DATEDIFF(DAY,H19,CURRENT_TIMESTAMP) <= 120  THEN '0-4'
+			    WHEN DATEDIFF(DAY,H19,CURRENT_TIMESTAMP) >= 121 AND DATEDIFF(DAY,H19,CURRENT_TIMESTAMP) <= 240  THEN '4-8'
+			    WHEN DATEDIFF(DAY,H19,CURRENT_TIMESTAMP) >= 241 AND DATEDIFF(DAY,H19,CURRENT_TIMESTAMP) <= 360  THEN '8-12'
+			    WHEN DATEDIFF(DAY,H19,CURRENT_TIMESTAMP) >= 361 THEN '12-'
+			  END",
+		'frecuencia' =>
+			"CASE
+			    WHEN [H28] >= 1 AND H28 <= 4 THEN 'IF'
+			    WHEN [H28] >= 5  AND H28 <= 12 THEN 'F'
+				WHEN [H28] >= 13 THEN 'VF'
+			END"
   	}
 
 	SCORES = {
@@ -216,6 +245,82 @@ module InfoturismoData
 	  			'11' => OpenStruct.new(
 	  				:clave => 'PosDoc',
 	  				:nombre => 'Postdoctorado'
+	  			)
+	  		},
+	  		'edad' => {
+	  			'18 - 29' => OpenStruct.new(
+	  				:clave => '1829',
+	  				:nombre => '18 - 29'
+	  			),
+   				'30 - 39' => OpenStruct.new(
+	  				:clave => '3039',
+	  				:nombre => '30 - 39'
+	  			),
+    			'40 - 49' => OpenStruct.new(
+	  				:clave => '4049',
+	  				:nombre => '40 - 49'
+	  			),
+    			'50 - 59' => OpenStruct.new(
+	  				:clave => '5059',
+	  				:nombre => '50 - 59'
+	  			),
+    			'60 - 69' => OpenStruct.new(
+	  				:clave => '6069',
+	  				:nombre => '60 - 69'
+	  			),
+    			'70 - 79' => OpenStruct.new(
+	  				:clave => '7079',
+	  				:nombre => '70 - 79'
+	  			),
+    			'80 - 89' => OpenStruct.new(
+	  				:clave => '8089',
+	  				:nombre => '80 - 89'
+	  			),
+    			'90 - 99' => OpenStruct.new(
+	  				:clave => '9099',
+	  				:nombre => '90 - 99'
+	  			)
+	  		},
+	  		'oportunidad' => {
+	  			'SI' => OpenStruct.new(
+	  				:clave => 'SI',
+	  				:nombre => 'Sí'
+	  			),
+	  			'NO' => OpenStruct.new(
+	  				:clave => 'NO',
+	  				:nombre => 'No'
+	  			),
+	  		},
+	  		'ultima' => {
+	  			'0-4' => OpenStruct.new(
+	  				:clave => '0-4',
+	  				:nombre => '0 - 4 meses'
+	  			),
+	  			'4-8' => OpenStruct.new(
+	  				:clave => '4-8',
+	  				:nombre => '4 - 8 meses'
+	  			),
+	  			'8-12' => OpenStruct.new(
+	  				:clave => '8-12',
+	  				:nombre => '8 - 12 meses'
+	  			),
+	  			'12-' => OpenStruct.new(
+	  				:clave => '12-',
+	  				:nombre => 'Más de un año'
+	  			),
+	  		},
+	  		'frecuencia' => {
+	  			'IF' => OpenStruct.new(
+	  				:clave => 'IF',
+	  				:nombre => 'Infrecuentemente'
+	  			),
+	  			'F' => OpenStruct.new(
+	  				:clave => 'F',
+	  				:nombre => 'Frecuentemente'
+	  			),
+	  			'VF' => OpenStruct.new(
+	  				:clave => 'VF',
+	  				:nombre => 'Muy Frecuentemente'
 	  			)
 	  		}
 	  	}

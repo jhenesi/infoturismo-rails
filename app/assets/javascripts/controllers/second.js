@@ -653,7 +653,22 @@ angular.module('infoturismoApp').controller('SecondCtrl', [
    				.addCrumb(crumbs.getExperienciaViaje())
    				.addCrumb(crumbs.getExperienciaViajeDisponibilidad());
 
-   			config['/experiencia/factores/recomendaciones'] = {
+            config['/experiencia/factores'] = {
+               title: labels.factores,
+               icon: icons.factores,
+               getData: infoturismoWebApi.getFactoresOverviewData
+            };
+
+            var experienciaFactores = config['/experiencia/factores'];
+
+            experienciaFactores.breadcrumb =
+               crumbs.getGeneral();
+
+            experienciaFactores.breadcrumb
+            .addCrumb(crumbs.getExperiencia())
+               .addCrumb(crumbs.getFactores());
+
+   			/*config['/experiencia/factores/recomendaciones'] = {
    				title: labels.factoresRecomendaciones,
    				icon: icons.pieChart,
    				getData: infoturismoWebApi.getFactoresRecomendacionesOverviewData
@@ -811,7 +826,7 @@ angular.module('infoturismoApp').controller('SecondCtrl', [
    			factoresOtro.breadcrumb
 				.addCrumb(crumbs.getExperiencia())
    				.addCrumb(crumbs.getFactores())
-   				.addCrumb(crumbs.getFactoresOtro());
+   				.addCrumb(crumbs.getFactoresOtro());*/
 
 
 

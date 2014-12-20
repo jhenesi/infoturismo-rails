@@ -69,21 +69,32 @@ class ExperienciaSurveyResult < ActiveRecord::Base
 
 	####################### FACTORES Consulta ??????
 	def self.get_factores_data
-		sql = ''
+		sql = "SELECT
+			SUM(CASE WHEN [E15(SQ001)] = 'Y' THEN 1 END) AS recomendacion,
+			SUM(CASE WHEN [E15(SQ002)] = 'Y' THEN 1 END) As conocimiento,
+			SUM(CASE WHEN [E15(SQ003)] = 'Y' THEN 1 END) AS cercania,
+			SUM(CASE WHEN [E15(SQ004)] = 'Y' THEN 1 END) AS precio,
+			SUM(CASE WHEN [E15(SQ005)] = 'Y' THEN 1 END) AS tiempo,
+			SUM(CASE WHEN [E15(SQ006)] = 'Y' THEN 1 END) AS actividades,
+			SUM(CASE WHEN [E15(SQ007)] = 'Y' THEN 1 END) AS interes,
+			SUM(CASE WHEN [E15(SQ008)] = 'Y' THEN 1 END) AS salud,
+			SUM(CASE WHEN [E15(SQ009)] = 'Y' THEN 1 END) AS trabajo,
+			SUM(CASE WHEN [E15(other)] IS NOT NULL THEN 1 END) AS otro
+		FROM tbl_Results_v1"
 
-			data = []
+		data = []
 
 		ExperienciaSurveyResult.find_by_sql(sql).each do |row|
-			data << ReactivoOverviewData.new("Recomendaciones", "Recomendaciones", row.recomendaciones_average)
-			data << ReactivoOverviewData.new("Conocimiento", "Conocimiento previo", row.conocimiento_average)
-			data << ReactivoOverviewData.new("Cercania", "Cercania del lugar de origen", row.cercania_average)
-			data << ReactivoOverviewData.new("Precios", "Precios", row.precios_average)
-			data << ReactivoOverviewData.new("Disponibilidad", "Disponibilidad de tiempo", row.disponibilidad_average)
-			data << ReactivoOverviewData.new("Diversidad", "Diversidad de actividades", row.diversidad_average)
-			data << ReactivoOverviewData.new("Interes", "Interes de conocer nuevos lugares", row.interes_average)
-			data << ReactivoOverviewData.new("Salud", "Salud", row.salud_average)
-			data << ReactivoOverviewData.new("Trabajo", "Trabajo", row.trabajo_average)
-			data << ReactivoOverviewData.new("Otro", "Otro", row.otro_average)
+			data << ReactivoData.new("Recomendaciones", "Recomendaciones", row.recomendacion)
+			data << ReactivoData.new("Conocimiento", "Conocimiento", row.conocimiento)
+			data << ReactivoData.new("Cercania", "Cercanía", row.cercania)
+			data << ReactivoData.new("Precios", "Precios", row.precio)
+			data << ReactivoData.new("Disponibilidad", "Disponibilidad", row.tiempo)
+			data << ReactivoData.new("Diversidad", "Actividades", row.actividades)
+			data << ReactivoData.new("Interes", "Interes", row.interes)
+			data << ReactivoData.new("Salud", "Salud", row.salud)
+			data << ReactivoData.new("Trabajo", "Trabajo", row.trabajo)
+			data << ReactivoData.new("Otro", "Otro", row.otro)
 		end
 
 		data

@@ -97,6 +97,7 @@ class AccesoSurveyResult < ActiveRecord::Base
 				end
 			end
 		end
+		
 		data.values
 	end
 

@@ -31,7 +31,7 @@ class ExperienciaSurveyResult < ActiveRecord::Base
 
 		ExperienciaSurveyResult.find_by_sql(sql).each do |row|
 			data << ReactivoOverviewData.new("ExperienciaViaje", "Experiencia de Viaje", row.experiencia_average)
-			data << ReactivoOverviewData.new("Factores", "Factores", row.factores_average)
+			data << ReactivoOverviewData.new("Factores", "Factores", "")
 		end
 
 		data

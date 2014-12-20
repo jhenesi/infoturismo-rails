@@ -1018,7 +1018,7 @@ angular.module('infoturismoApp').controller('SecondCtrl', [
          }
 
         $scope.$watch('filters', function() {
-			if($scope.filters.filterBy !== "") {
+			if($scope.filters.filterBy !== "" && route != '/experiencia/factores') {
         		$scope.template = 'partials/second-column.html';
 
         		config.getData($scope.filters.filterBy)

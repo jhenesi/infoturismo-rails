@@ -1164,7 +1164,7 @@ def self.get_TransporteDisponibilidadEstacionamiento_data()
 
 
 
-  	def self.get_TransporteDisponibilidadEstacionamineto_data_grouped(group_by)
+  	def self.get_TransporteDisponibilidadEstacionamiento_data_grouped(group_by)
   		
 	  	sql = 
 	  		"SELECT COUNT(*) as conteo,

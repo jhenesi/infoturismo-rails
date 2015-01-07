@@ -668,170 +668,6 @@ angular.module('infoturismoApp').controller('SecondCtrl', [
             .addCrumb(crumbs.getExperiencia())
                .addCrumb(crumbs.getFactores());
 
-   			/*config['/experiencia/factores/recomendaciones'] = {
-   				title: labels.factoresRecomendaciones,
-   				icon: icons.pieChart,
-   				getData: infoturismoWebApi.getFactoresRecomendacionesOverviewData
-   			}
-
-   			var factoresRecomendaciones = config['/experiencia/factores/recomendaciones'];
-
-   			factoresRecomendaciones.breadcrumb =
-   				crumbs.getGeneral();
-
-   			factoresRecomendaciones.breadcrumb
-				.addCrumb(crumbs.getExperiencia())
-   				.addCrumb(crumbs.getFactores())
-   				.addCrumb(crumbs.getFactoresRecomendaciones());
-
-   			config['/experiencia/factores/conocimiento'] = {
-   				title: labels.factoresConocimiento,
-   				icon: icons.pieChart,
-   				getData: infoturismoWebApi.getFactoresConocimientoOverviewData
-   			}
-
-   			var factoresConocimiento = config['/experiencia/factores/conocimiento'];
-
-   			factoresConocimiento.breadcrumb =
-   				crumbs.getGeneral();
-
-   			factoresConocimiento.breadcrumb
-				.addCrumb(crumbs.getExperiencia())
-   				.addCrumb(crumbs.getFactores())
-   				.addCrumb(crumbs.getFactoresConocimiento());
-
-   			config['/experiencia/factores/cercania'] = {
-   				title: labels.factoresCercania,
-   				icon: icons.pieChart,
-   				getData: infoturismoWebApi.getFactoresCercaniaOverviewData
-   			}
-
-   			var factoresCercania = config['/experiencia/factores/cercania'];
-
-   			factoresCercania.breadcrumb =
-   				crumbs.getGeneral();
-
-   			factoresCercania.breadcrumb
-				.addCrumb(crumbs.getExperiencia())
-   				.addCrumb(crumbs.getFactores())
-   				.addCrumb(crumbs.getFactoresCercania());
-
-   			config['/experiencia/factores/precios'] = {
-   				title: labels.factoresPrecios,
-   				icon: icons.pieChart,
-   				getData: infoturismoWebApi.getFactoresPreciosOverviewData
-   			}
-
-   			var factoresPrecios = config['/experiencia/factores/precios'];
-
-   			factoresPrecios.breadcrumb =
-   				crumbs.getGeneral();
-
-   			factoresPrecios.breadcrumb
-				.addCrumb(crumbs.getExperiencia())
-   				.addCrumb(crumbs.getFactores())
-   				.addCrumb(crumbs.getFactoresPrecios());
-
-   			config['/experiencia/factores/disponibilidad'] = {
-   				title: labels.factoresDisponibilidad,
-   				icon: icons.pieChart,
-   				getData: infoturismoWebApi.getFactoresDisponibilidadOverviewData
-   			}
-
-   			var factoresDisponibilidad = config['/experiencia/factores/disponibilidad'];
-
-   			factoresDisponibilidad.breadcrumb =
-   				crumbs.getGeneral();
-
-   			factoresDisponibilidad.breadcrumb
-				.addCrumb(crumbs.getExperiencia())
-   				.addCrumb(crumbs.getFactores())
-   				.addCrumb(crumbs.getFactoresDisponibilidad());
-
-   			config['/experiencia/factores/diversidad'] = {
-   				title: labels.factoresDiversidad,
-   				icon: icons.pieChart,
-   				getData: infoturismoWebApi.getFactoresDiversidadOverviewData
-   			}
-
-   			var factoresDiversidad = config['/experiencia/factores/diversidad'];
-
-   			factoresDiversidad.breadcrumb =
-   				crumbs.getGeneral();
-
-   			factoresDiversidad.breadcrumb
-				.addCrumb(crumbs.getExperiencia())
-   				.addCrumb(crumbs.getFactores())
-   				.addCrumb(crumbs.getFactoresDiversidad());
-
-   			config['/experiencia/factores/interes'] = {
-   				title: labels.factoresInteres,
-   				icon: icons.pieChart,
-   				getData: infoturismoWebApi.getFactoresInteresOverviewData
-   			}
-
-   			var factoresInteres = config['/experiencia/factores/interes'];
-
-   			factoresInteres.breadcrumb =
-   				crumbs.getGeneral();
-
-   			factoresInteres.breadcrumb
-				.addCrumb(crumbs.getExperiencia())
-   				.addCrumb(crumbs.getFactores())
-   				.addCrumb(crumbs.getFactoresInteres());
-
-   			config['/experiencia/factores/salud'] = {
-   				title: labels.factoresSalud,
-   				icon: icons.pieChart,
-   				getData: infoturismoWebApi.getFactoresSaludOverviewData
-   			}
-
-   			var factoresSalud = config['/experiencia/factores/salud'];
-
-   			factoresSalud.breadcrumb =
-   				crumbs.getGeneral();
-
-   			factoresSalud.breadcrumb
-				.addCrumb(crumbs.getExperiencia())
-   				.addCrumb(crumbs.getFactores())
-   				.addCrumb(crumbs.getFactoresSalud());
-
-   			config['/experiencia/factores/trabajo'] = {
-   				title: labels.factoresTrabajo,
-   				icon: icons.pieChart,
-   				getData: infoturismoWebApi.getFactoresTrabajoOverviewData
-   			}
-
-   			var factoresTrabajo = config['/experiencia/factores/trabajo'];
-
-   			factoresTrabajo.breadcrumb =
-   				crumbs.getGeneral();
-
-   			factoresTrabajo.breadcrumb
-				.addCrumb(crumbs.getExperiencia())
-   				.addCrumb(crumbs.getFactores())
-   				.addCrumb(crumbs.getFactoresTrabajo());
-
-   			config['/experiencia/factores/otro'] = {
-   				title: labels.factoresOtro,
-   				icon: icons.pieChart,
-   				getData: infoturismoWebApi.getFactoresOtroOverviewData
-   			}
-
-   			var factoresOtro = config['/experiencia/factores/otro'];
-
-   			factoresOtro.breadcrumb =
-   				crumbs.getGeneral();
-
-   			factoresOtro.breadcrumb
-				.addCrumb(crumbs.getExperiencia())
-   				.addCrumb(crumbs.getFactores())
-   				.addCrumb(crumbs.getFactoresOtro());*/
-
-
-
-
-
 //Imagen-Percepcion
          config['/imagen/percepcion'] = {
             title: labels.seguridad,
@@ -913,11 +749,6 @@ angular.module('infoturismoApp').controller('SecondCtrl', [
                .addCrumb(crumbs.getImagen())
                .addCrumb(crumbs.getImagenLimpieza());
 
-
-
-
-
-
       //Satisfaccion-Nivel
          config['/satisfaccion/nivel'] = {
             title: labels.nivelSatisfaccion,
@@ -947,8 +778,6 @@ angular.module('infoturismoApp').controller('SecondCtrl', [
             expect.breadcrumb
                .addCrumb(crumbs.getSatisfaccion())
                .addCrumb(crumbs.getSatisfaccionExpectativas());
-
-
 
             //Satisfaccion-Dispocision
             config['/satisfaccion/disposicion'] = {
@@ -1014,11 +843,18 @@ angular.module('infoturismoApp').controller('SecondCtrl', [
             genero: labels.filtroGenero,
             compania: labels.filtroCompania,
             ocupacion: labels.filtroOcupacion,
-            grado: labels.filtroGrado
+            grado: labels.filtroGrado,
+
+            edad: labels.filtroEdad,
+            ultima: labels.filtroVisita,
+            frecuencia: labels.filtroFrecuencia,
+            oportunidad: labels.filtroRegresar
+
+
          }
 
         $scope.$watch('filters', function() {
-			if($scope.filters.filterBy !== "") {
+			if($scope.filters.filterBy !== "" && route != '/experiencia/factores') {
         		$scope.template = 'partials/second-column.html';
 
         		config.getData($scope.filters.filterBy)

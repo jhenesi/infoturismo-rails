@@ -23,15 +23,14 @@ class ExperienciaSurveyResult < ActiveRecord::Base
 			  	AVG(CAST([E14(E1404)] AS INT)) +
 			  	AVG(CAST([E14(E1405)] AS INT)) +
 			  	AVG(CAST([E14(E1406)] AS INT)) +
-			  	AVG(CAST([E14(E1407)] AS INT)))/(7*1.0)), 1) AS FLOAT) as experiencia_average,
-				COUNT([E15(SQ001)]) as factores_average
+			  	AVG(CAST([E14(E1407)] AS INT)))/(7*1.0)), 1) AS FLOAT) as experiencia_viaje_average
 			FROM tbl_Results_v1'
 
 			data = []
 
 		ExperienciaSurveyResult.find_by_sql(sql).each do |row|
-			data << ReactivoOverviewData.new("ExperienciaViaje", "Experiencia de Viaje", row.experiencia_average)
-			data << ReactivoOverviewData.new("Factores", "Factores", row.factores_average)
+			data << ReactivoOverviewData.new("ExperienciaViaje", "Experiencia de Viaje", row.experiencia_viaje_average)
+			data << ReactivoOverviewData.new("Factores", "Factores", "")
 		end
 
 		data
@@ -39,7 +38,7 @@ class ExperienciaSurveyResult < ActiveRecord::Base
 
 
 	####################### EXPERIENCIA VIAJE
-	def self.get_experienciaViaje_data
+	def self.get_ExperienciaViaje_data
 		sql = 'SELECT 
 				ROUND(AVG(CAST([E14(E1401)] AS INT)), 1) as obregon_average,  
 			  	ROUND(AVG(CAST([E14(E1402)] AS INT)), 1) as hospitalidad_average,
@@ -105,7 +104,7 @@ class ExperienciaSurveyResult < ActiveRecord::Base
 
 
 	############################ OBREGON
-    def self.get_EVobregon_data()
+    def self.get_ViajeObregon_data()
 	  	sql = 
 	  		"SELECT COUNT(*) as conteo,
 	  		 CASE
@@ -126,7 +125,7 @@ class ExperienciaSurveyResult < ActiveRecord::Base
 
 		data = []
 
-		CostoSurveyResult.find_by_sql(sql).each do |row|
+		ExperienciaSurveyResult.find_by_sql(sql).each do |row|
 			if SCORES.has_key?(row.calificacion)
 				score = SCORES[row.calificacion];
 				data << ReactivoData.new(score.clave, score.nombre, row.conteo)
@@ -136,7 +135,7 @@ class ExperienciaSurveyResult < ActiveRecord::Base
 		data
   	end
 
-  	def self.get_EVobregon_data_grouped(group_by)
+  	def self.get_ViajeObregon_data_grouped(group_by)
   		
 	  	sql = 
 	  		"SELECT COUNT(*) as conteo,
@@ -159,7 +158,469 @@ class ExperienciaSurveyResult < ActiveRecord::Base
 
 	 	data = {}
 
-		CostoSurveyResult.find_by_sql(sql).each do |row|
+		ExperienciaSurveyResult.find_by_sql(sql).each do |row|
+			if CATEGORIES[group_by].has_key?(row.filtro)
+				data[row.filtro] = data[row.filtro] || ReactivoGroupedData.new(
+					CATEGORIES[group_by][row.filtro].clave,
+					CATEGORIES[group_by][row.filtro].nombre
+				)
+
+				unless row.calificacion.nil? 
+					data[row.filtro].Datos << ReactivoData.new(
+						SCORES[row.calificacion].clave,
+						SCORES[row.calificacion].nombre,
+						row.conteo
+					)
+				end
+			end
+		end
+
+		data.values
+	end
+
+
+
+	############################ HOSPITALIDAD
+    def self.get_ViajeHospitalidad_data()
+	  	sql = 
+	  		"SELECT COUNT(*) as conteo,
+	  		 CASE
+	      		WHEN CAST([E14(E1402)] AS INT) >= 1 AND CAST([E14(E1402)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1402)] AS INT) >= 3 AND CAST([E14(E1402)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1402)] AS INT) >= 5 AND CAST([E14(E1402)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1402)] AS INT) >= 7 AND CAST([E14(E1402)] AS INT) <= 8 THEN 'alta'
+	           	WHEN CAST([E14(E1402)] AS INT) >= 9 AND CAST([E14(E1402)] AS INT) <= 10 THEN 'muy_alta'
+	         END as calificacion
+			 FROM tbl_Results_v1
+			 GROUP BY CASE
+	      		WHEN CAST([E14(E1402)] AS INT) >= 1 AND CAST([E14(E1402)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1402)] AS INT) >= 3 AND CAST([E14(E1402)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1402)] AS INT) >= 5 AND CAST([E14(E1402)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1402)] AS INT) >= 7 AND CAST([E14(E1402)] AS INT) <= 8 THEN 'alta'
+	           	WHEN CAST([E14(E1402)] AS INT) >= 9 AND CAST([E14(E1402)] AS INT) <= 10 THEN 'muy_alta'
+	         END"
+
+		data = []
+
+		ExperienciaSurveyResult.find_by_sql(sql).each do |row|
+			if SCORES.has_key?(row.calificacion)
+				score = SCORES[row.calificacion];
+				data << ReactivoData.new(score.clave, score.nombre, row.conteo)
+			end	
+		end
+
+		data
+  	end
+
+  	def self.get_ViajeHospitalidad_data_grouped(group_by)
+  		
+	  	sql = 
+	  		"SELECT COUNT(*) as conteo,
+	  		 CASE
+	      		WHEN CAST([E14(E1402)] AS INT) >= 1 AND CAST([E14(E1402)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1402)] AS INT) >= 3 AND CAST([E14(E1402)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1402)] AS INT) >= 5 AND CAST([E14(E1402)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1402)] AS INT) >= 9 AND CAST([E14(E1402)] AS INT) <= 10 THEN 'muy_alta'
+	           	WHEN CAST([E14(E1402)] AS INT) >= 7 AND CAST([E14(E1402)] AS INT) <= 8 THEN 'alta'
+	         END as calificacion,
+	         #{FILTER_COLUMNS[group_by]} as filtro
+			 FROM tbl_Results_v1
+			 GROUP BY CASE
+	      		WHEN CAST([E14(E1402)] AS INT) >= 1 AND CAST([E14(E1402)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1402)] AS INT) >= 3 AND CAST([E14(E1402)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1402)] AS INT) >= 5 AND CAST([E14(E1402)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1402)] AS INT) >= 9 AND CAST([E14(E1402)] AS INT) <= 10 THEN 'muy_alta'
+	           	WHEN CAST([E14(E1402)] AS INT) >= 7 AND CAST([E14(E1402)] AS INT) <= 8 THEN 'alta'
+	         END, #{FILTER_COLUMNS[group_by]}"
+
+	 	data = {}
+
+		ExperienciaSurveyResult.find_by_sql(sql).each do |row|
+			if CATEGORIES[group_by].has_key?(row.filtro)
+				data[row.filtro] = data[row.filtro] || ReactivoGroupedData.new(
+					CATEGORIES[group_by][row.filtro].clave,
+					CATEGORIES[group_by][row.filtro].nombre
+				)
+
+				unless row.calificacion.nil? 
+					data[row.filtro].Datos << ReactivoData.new(
+						SCORES[row.calificacion].clave,
+						SCORES[row.calificacion].nombre,
+						row.conteo
+					)
+				end
+			end
+		end
+
+		data.values
+	end
+
+
+
+	############################ NATURALES
+    def self.get_ViajeNaturales_data()
+	  	sql = 
+	  		"SELECT COUNT(*) as conteo,
+	  		 CASE
+	      		WHEN CAST([E14(E1403)] AS INT) >= 1 AND CAST([E14(E1403)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1403)] AS INT) >= 3 AND CAST([E14(E1403)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1403)] AS INT) >= 5 AND CAST([E14(E1403)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1403)] AS INT) >= 7 AND CAST([E14(E1403)] AS INT) <= 8 THEN 'alta'
+	           	WHEN CAST([E14(E1403)] AS INT) >= 9 AND CAST([E14(E1403)] AS INT) <= 10 THEN 'muy_alta'
+	         END as calificacion
+			 FROM tbl_Results_v1
+			 GROUP BY CASE
+	      		WHEN CAST([E14(E1403)] AS INT) >= 1 AND CAST([E14(E1403)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1403)] AS INT) >= 3 AND CAST([E14(E1403)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1403)] AS INT) >= 5 AND CAST([E14(E1403)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1403)] AS INT) >= 7 AND CAST([E14(E1403)] AS INT) <= 8 THEN 'alta'
+	           	WHEN CAST([E14(E1403)] AS INT) >= 9 AND CAST([E14(E1403)] AS INT) <= 10 THEN 'muy_alta'
+	         END"
+
+		data = []
+
+		ExperienciaSurveyResult.find_by_sql(sql).each do |row|
+			if SCORES.has_key?(row.calificacion)
+				score = SCORES[row.calificacion];
+				data << ReactivoData.new(score.clave, score.nombre, row.conteo)
+			end	
+		end
+
+		data
+  	end
+
+  	def self.get_ViajeNaturales_data_grouped(group_by)
+  		
+	  	sql = 
+	  		"SELECT COUNT(*) as conteo,
+	  		 CASE
+	      		WHEN CAST([E14(E1403)] AS INT) >= 1 AND CAST([E14(E1403)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1403)] AS INT) >= 3 AND CAST([E14(E1403)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1403)] AS INT) >= 5 AND CAST([E14(E1403)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1403)] AS INT) >= 9 AND CAST([E14(E1403)] AS INT) <= 10 THEN 'muy_alta'
+	           	WHEN CAST([E14(E1403)] AS INT) >= 7 AND CAST([E14(E1403)] AS INT) <= 8 THEN 'alta'
+	         END as calificacion,
+	         #{FILTER_COLUMNS[group_by]} as filtro
+			 FROM tbl_Results_v1
+			 GROUP BY CASE
+	      		WHEN CAST([E14(E1403)] AS INT) >= 1 AND CAST([E14(E1403)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1403)] AS INT) >= 3 AND CAST([E14(E1403)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1403)] AS INT) >= 5 AND CAST([E14(E1403)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1403)] AS INT) >= 9 AND CAST([E14(E1403)] AS INT) <= 10 THEN 'muy_alta'
+	           	WHEN CAST([E14(E1403)] AS INT) >= 7 AND CAST([E14(E1403)] AS INT) <= 8 THEN 'alta'
+	         END, #{FILTER_COLUMNS[group_by]}"
+
+	 	data = {}
+
+		ExperienciaSurveyResult.find_by_sql(sql).each do |row|
+			if CATEGORIES[group_by].has_key?(row.filtro)
+				data[row.filtro] = data[row.filtro] || ReactivoGroupedData.new(
+					CATEGORIES[group_by][row.filtro].clave,
+					CATEGORIES[group_by][row.filtro].nombre
+				)
+
+				unless row.calificacion.nil? 
+					data[row.filtro].Datos << ReactivoData.new(
+						SCORES[row.calificacion].clave,
+						SCORES[row.calificacion].nombre,
+						row.conteo
+					)
+				end
+			end
+		end
+
+		data.values
+	end
+
+
+
+	############################ ACTIVIDADES
+    def self.get_ViajeActividades_data()
+	  	sql = 
+	  		"SELECT COUNT(*) as conteo,
+	  		 CASE
+	      		WHEN CAST([E14(E1404)] AS INT) >= 1 AND CAST([E14(E1404)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1404)] AS INT) >= 3 AND CAST([E14(E1404)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1404)] AS INT) >= 5 AND CAST([E14(E1404)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1404)] AS INT) >= 7 AND CAST([E14(E1404)] AS INT) <= 8 THEN 'alta'
+	           	WHEN CAST([E14(E1404)] AS INT) >= 9 AND CAST([E14(E1404)] AS INT) <= 10 THEN 'muy_alta'
+	         END as calificacion
+			 FROM tbl_Results_v1
+			 GROUP BY CASE
+	      		WHEN CAST([E14(E1404)] AS INT) >= 1 AND CAST([E14(E1404)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1404)] AS INT) >= 3 AND CAST([E14(E1404)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1404)] AS INT) >= 5 AND CAST([E14(E1404)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1404)] AS INT) >= 7 AND CAST([E14(E1404)] AS INT) <= 8 THEN 'alta'
+	           	WHEN CAST([E14(E1404)] AS INT) >= 9 AND CAST([E14(E1404)] AS INT) <= 10 THEN 'muy_alta'
+	         END"
+
+		data = []
+
+		ExperienciaSurveyResult.find_by_sql(sql).each do |row|
+			if SCORES.has_key?(row.calificacion)
+				score = SCORES[row.calificacion];
+				data << ReactivoData.new(score.clave, score.nombre, row.conteo)
+			end	
+		end
+
+		data
+  	end
+
+  	def self.get_ViajeActividades_data_grouped(group_by)
+  		
+	  	sql = 
+	  		"SELECT COUNT(*) as conteo,
+	  		 CASE
+	      		WHEN CAST([E14(E1404)] AS INT) >= 1 AND CAST([E14(E1404)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1404)] AS INT) >= 3 AND CAST([E14(E1404)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1404)] AS INT) >= 5 AND CAST([E14(E1404)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1404)] AS INT) >= 9 AND CAST([E14(E1404)] AS INT) <= 10 THEN 'muy_alta'
+	           	WHEN CAST([E14(E1404)] AS INT) >= 7 AND CAST([E14(E1404)] AS INT) <= 8 THEN 'alta'
+	         END as calificacion,
+	         #{FILTER_COLUMNS[group_by]} as filtro
+			 FROM tbl_Results_v1
+			 GROUP BY CASE
+	      		WHEN CAST([E14(E1404)] AS INT) >= 1 AND CAST([E14(E1404)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1404)] AS INT) >= 3 AND CAST([E14(E1404)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1404)] AS INT) >= 5 AND CAST([E14(E1404)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1404)] AS INT) >= 9 AND CAST([E14(E1404)] AS INT) <= 10 THEN 'muy_alta'
+	           	WHEN CAST([E14(E1404)] AS INT) >= 7 AND CAST([E14(E1404)] AS INT) <= 8 THEN 'alta'
+	         END, #{FILTER_COLUMNS[group_by]}"
+
+	 	data = {}
+
+		ExperienciaSurveyResult.find_by_sql(sql).each do |row|
+			if CATEGORIES[group_by].has_key?(row.filtro)
+				data[row.filtro] = data[row.filtro] || ReactivoGroupedData.new(
+					CATEGORIES[group_by][row.filtro].clave,
+					CATEGORIES[group_by][row.filtro].nombre
+				)
+
+				unless row.calificacion.nil? 
+					data[row.filtro].Datos << ReactivoData.new(
+						SCORES[row.calificacion].clave,
+						SCORES[row.calificacion].nombre,
+						row.conteo
+					)
+				end
+			end
+		end
+
+		data.values
+	end
+
+
+
+
+	############################ EMOCION
+    def self.get_ViajeEmocion_data()
+	  	sql = 
+	  		"SELECT COUNT(*) as conteo,
+	  		 CASE
+	      		WHEN CAST([E14(E1405)] AS INT) >= 1 AND CAST([E14(E1405)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1405)] AS INT) >= 3 AND CAST([E14(E1405)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1405)] AS INT) >= 5 AND CAST([E14(E1405)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1405)] AS INT) >= 7 AND CAST([E14(E1405)] AS INT) <= 8 THEN 'alta'
+	           	WHEN CAST([E14(E1405)] AS INT) >= 9 AND CAST([E14(E1405)] AS INT) <= 10 THEN 'muy_alta'
+	         END as calificacion
+			 FROM tbl_Results_v1
+			 GROUP BY CASE
+	      		WHEN CAST([E14(E1405)] AS INT) >= 1 AND CAST([E14(E1405)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1405)] AS INT) >= 3 AND CAST([E14(E1405)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1405)] AS INT) >= 5 AND CAST([E14(E1405)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1405)] AS INT) >= 7 AND CAST([E14(E1405)] AS INT) <= 8 THEN 'alta'
+	           	WHEN CAST([E14(E1405)] AS INT) >= 9 AND CAST([E14(E1405)] AS INT) <= 10 THEN 'muy_alta'
+	         END"
+
+		data = []
+
+		ExperienciaSurveyResult.find_by_sql(sql).each do |row|
+			if SCORES.has_key?(row.calificacion)
+				score = SCORES[row.calificacion];
+				data << ReactivoData.new(score.clave, score.nombre, row.conteo)
+			end	
+		end
+
+		data
+  	end
+
+  	def self.get_ViajeEmocion_data_grouped(group_by)
+  		
+	  	sql = 
+	  		"SELECT COUNT(*) as conteo,
+	  		 CASE
+	      		WHEN CAST([E14(E1405)] AS INT) >= 1 AND CAST([E14(E1405)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1405)] AS INT) >= 3 AND CAST([E14(E1405)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1405)] AS INT) >= 5 AND CAST([E14(E1405)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1405)] AS INT) >= 9 AND CAST([E14(E1405)] AS INT) <= 10 THEN 'muy_alta'
+	           	WHEN CAST([E14(E1405)] AS INT) >= 7 AND CAST([E14(E1405)] AS INT) <= 8 THEN 'alta'
+	         END as calificacion,
+	         #{FILTER_COLUMNS[group_by]} as filtro
+			 FROM tbl_Results_v1
+			 GROUP BY CASE
+	      		WHEN CAST([E14(E1405)] AS INT) >= 1 AND CAST([E14(E1405)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1405)] AS INT) >= 3 AND CAST([E14(E1405)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1405)] AS INT) >= 5 AND CAST([E14(E1405)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1405)] AS INT) >= 9 AND CAST([E14(E1405)] AS INT) <= 10 THEN 'muy_alta'
+	           	WHEN CAST([E14(E1405)] AS INT) >= 7 AND CAST([E14(E1405)] AS INT) <= 8 THEN 'alta'
+	         END, #{FILTER_COLUMNS[group_by]}"
+
+	 	data = {}
+
+		ExperienciaSurveyResult.find_by_sql(sql).each do |row|
+			if CATEGORIES[group_by].has_key?(row.filtro)
+				data[row.filtro] = data[row.filtro] || ReactivoGroupedData.new(
+					CATEGORIES[group_by][row.filtro].clave,
+					CATEGORIES[group_by][row.filtro].nombre
+				)
+
+				unless row.calificacion.nil? 
+					data[row.filtro].Datos << ReactivoData.new(
+						SCORES[row.calificacion].clave,
+						SCORES[row.calificacion].nombre,
+						row.conteo
+					)
+				end
+			end
+		end
+
+		data.values
+	end
+
+
+
+	############################ DIFERENTE
+    def self.get_ViajeDiferente_data()
+	  	sql = 
+	  		"SELECT COUNT(*) as conteo,
+	  		 CASE
+	      		WHEN CAST([E14(E1406)] AS INT) >= 1 AND CAST([E14(E1406)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1406)] AS INT) >= 3 AND CAST([E14(E1406)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1406)] AS INT) >= 5 AND CAST([E14(E1406)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1406)] AS INT) >= 7 AND CAST([E14(E1406)] AS INT) <= 8 THEN 'alta'
+	           	WHEN CAST([E14(E1406)] AS INT) >= 9 AND CAST([E14(E1406)] AS INT) <= 10 THEN 'muy_alta'
+	         END as calificacion
+			 FROM tbl_Results_v1
+			 GROUP BY CASE
+	      		WHEN CAST([E14(E1406)] AS INT) >= 1 AND CAST([E14(E1406)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1406)] AS INT) >= 3 AND CAST([E14(E1406)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1406)] AS INT) >= 5 AND CAST([E14(E1406)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1406)] AS INT) >= 7 AND CAST([E14(E1406)] AS INT) <= 8 THEN 'alta'
+	           	WHEN CAST([E14(E1406)] AS INT) >= 9 AND CAST([E14(E1406)] AS INT) <= 10 THEN 'muy_alta'
+	         END"
+
+		data = []
+
+		ExperienciaSurveyResult.find_by_sql(sql).each do |row|
+			if SCORES.has_key?(row.calificacion)
+				score = SCORES[row.calificacion];
+				data << ReactivoData.new(score.clave, score.nombre, row.conteo)
+			end	
+		end
+
+		data
+  	end
+
+  	def self.get_ViajeDiferente_data_grouped(group_by)
+  		
+	  	sql = 
+	  		"SELECT COUNT(*) as conteo,
+	  		 CASE
+	      		WHEN CAST([E14(E1406)] AS INT) >= 1 AND CAST([E14(E1406)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1406)] AS INT) >= 3 AND CAST([E14(E1406)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1406)] AS INT) >= 5 AND CAST([E14(E1406)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1406)] AS INT) >= 9 AND CAST([E14(E1406)] AS INT) <= 10 THEN 'muy_alta'
+	           	WHEN CAST([E14(E1406)] AS INT) >= 7 AND CAST([E14(E1406)] AS INT) <= 8 THEN 'alta'
+	         END as calificacion,
+	         #{FILTER_COLUMNS[group_by]} as filtro
+			 FROM tbl_Results_v1
+			 GROUP BY CASE
+	      		WHEN CAST([E14(E1406)] AS INT) >= 1 AND CAST([E14(E1406)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1406)] AS INT) >= 3 AND CAST([E14(E1406)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1406)] AS INT) >= 5 AND CAST([E14(E1406)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1406)] AS INT) >= 9 AND CAST([E14(E1406)] AS INT) <= 10 THEN 'muy_alta'
+	           	WHEN CAST([E14(E1406)] AS INT) >= 7 AND CAST([E14(E1406)] AS INT) <= 8 THEN 'alta'
+	         END, #{FILTER_COLUMNS[group_by]}"
+
+	 	data = {}
+
+		ExperienciaSurveyResult.find_by_sql(sql).each do |row|
+			if CATEGORIES[group_by].has_key?(row.filtro)
+				data[row.filtro] = data[row.filtro] || ReactivoGroupedData.new(
+					CATEGORIES[group_by][row.filtro].clave,
+					CATEGORIES[group_by][row.filtro].nombre
+				)
+
+				unless row.calificacion.nil? 
+					data[row.filtro].Datos << ReactivoData.new(
+						SCORES[row.calificacion].clave,
+						SCORES[row.calificacion].nombre,
+						row.conteo
+					)
+				end
+			end
+		end
+
+		data.values
+	end
+
+
+	############################ DISPONIBILIDAD
+    def self.get_ViajeDisponibilidad_data()
+	  	sql = 
+	  		"SELECT COUNT(*) as conteo,
+	  		 CASE
+	      		WHEN CAST([E14(E1407)] AS INT) >= 1 AND CAST([E14(E1407)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1407)] AS INT) >= 3 AND CAST([E14(E1407)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1407)] AS INT) >= 5 AND CAST([E14(E1407)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1407)] AS INT) >= 7 AND CAST([E14(E1407)] AS INT) <= 8 THEN 'alta'
+	           	WHEN CAST([E14(E1407)] AS INT) >= 9 AND CAST([E14(E1407)] AS INT) <= 10 THEN 'muy_alta'
+	         END as calificacion
+			 FROM tbl_Results_v1
+			 GROUP BY CASE
+	      		WHEN CAST([E14(E1407)] AS INT) >= 1 AND CAST([E14(E1407)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1407)] AS INT) >= 3 AND CAST([E14(E1407)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1407)] AS INT) >= 5 AND CAST([E14(E1407)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1407)] AS INT) >= 7 AND CAST([E14(E1407)] AS INT) <= 8 THEN 'alta'
+	           	WHEN CAST([E14(E1407)] AS INT) >= 9 AND CAST([E14(E1407)] AS INT) <= 10 THEN 'muy_alta'
+	         END"
+
+		data = []
+
+		ExperienciaSurveyResult.find_by_sql(sql).each do |row|
+			if SCORES.has_key?(row.calificacion)
+				score = SCORES[row.calificacion];
+				data << ReactivoData.new(score.clave, score.nombre, row.conteo)
+			end	
+		end
+
+		data
+  	end
+
+  	def self.get_ViajeDisponibilidad_data_grouped(group_by)
+  		
+	  	sql = 
+	  		"SELECT COUNT(*) as conteo,
+	  		 CASE
+	      		WHEN CAST([E14(E1407)] AS INT) >= 1 AND CAST([E14(E1407)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1407)] AS INT) >= 3 AND CAST([E14(E1407)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1407)] AS INT) >= 5 AND CAST([E14(E1407)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1407)] AS INT) >= 9 AND CAST([E14(E1407)] AS INT) <= 10 THEN 'muy_alta'
+	           	WHEN CAST([E14(E1407)] AS INT) >= 7 AND CAST([E14(E1407)] AS INT) <= 8 THEN 'alta'
+	         END as calificacion,
+	         #{FILTER_COLUMNS[group_by]} as filtro
+			 FROM tbl_Results_v1
+			 GROUP BY CASE
+	      		WHEN CAST([E14(E1407)] AS INT) >= 1 AND CAST([E14(E1407)] AS INT) <= 2 THEN 'muy_baja'
+	           	WHEN CAST([E14(E1407)] AS INT) >= 3 AND CAST([E14(E1407)] AS INT) <= 4 THEN 'baja'
+	           	WHEN CAST([E14(E1407)] AS INT) >= 5 AND CAST([E14(E1407)] AS INT) <= 6 THEN 'media'
+	           	WHEN CAST([E14(E1407)] AS INT) >= 9 AND CAST([E14(E1407)] AS INT) <= 10 THEN 'muy_alta'
+	           	WHEN CAST([E14(E1407)] AS INT) >= 7 AND CAST([E14(E1407)] AS INT) <= 8 THEN 'alta'
+	         END, #{FILTER_COLUMNS[group_by]}"
+
+	 	data = {}
+
+		ExperienciaSurveyResult.find_by_sql(sql).each do |row|
 			if CATEGORIES[group_by].has_key?(row.filtro)
 				data[row.filtro] = data[row.filtro] || ReactivoGroupedData.new(
 					CATEGORIES[group_by][row.filtro].clave,

@@ -466,7 +466,7 @@ getHospedajeEleccion: function() {
         },
         getExperienciaViajeHospitalidad: function() {
             return {
-                name: labels.experienciaViajehospitalidad,
+                name: labels.experienciaViajeHospitalidad,
                 href: '',
                 icon: icons.pieChart,
                 addCrumb: addCrumb

@@ -43,7 +43,7 @@ class AtractivosController < ApplicationController
 		if params[:group_by].nil?
 			data = AtractivosSurveyResult.get_culturales_data
 		else
-			data = AtractivosSurveyResult.get_cuturales_data_grouped(params[:group_by])
+			data = AtractivosSurveyResult.get_culturales_data_grouped(params[:group_by])
 		end
 
 		render json: data, status: 200

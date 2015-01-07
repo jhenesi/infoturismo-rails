@@ -3,6 +3,7 @@
 angular
   .module('infoturismoApp', [
     'ngRoute',
+    'ngCookies',
     'templates',
     'angularSpinner'
   ])
@@ -310,12 +311,23 @@ angular
   })
 
   .config(function ($httpProvider) {
-    $httpProvider.interceptors.push(function($q, blockui) {
+    $httpProvider.interceptors.push(function($q, $injector, blockui, icons, labels) {
       return {
         'request': function(config) {
           blockui.mask();
+
+          var AuthToken = $injector.get("AuthToken");
+          var token = AuthToken.get();
+
+          config.headers = config.headers || {};
+
+          config.timeout = $q.defer().promise;
         
-          return config;
+          if (token) {
+            config.headers.Authorization = "Bearer " + token;
+          }
+
+          return config || $q.when(config);
         },
 
         'response': function(response) {
@@ -325,11 +337,29 @@ angular
           return response;
         },
         
-        'responseError': function(rejection) {
+        'responseError': function(response) {
           blockui.demask();
-          blockui.showError();
-          
-          return $q.reject(rejection);
+
+          if(response.status == 419) {
+            $injector.get("AuthToken").remove();
+          }
+
+          if(response.status != 401 && response.status != 403 && response.status != 419) {
+            blockui.showError();
+          }
+            
+          var AuthEvents = $injector.get('AuthEvents');
+          var matchesAuthenticatePath = response.config && response.config.url.match(new RegExp('/auth'));
+
+          if (!matchesAuthenticatePath) {
+            $injector.get('$rootScope').$broadcast({
+              401: AuthEvents.notAuthenticated,
+              403: AuthEvents.notAuthorized,
+              419: AuthEvents.sessionTimeout
+            }[response.status], response);
+          }
+
+          return $q.reject(response);
         }
       };
     });

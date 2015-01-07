@@ -1,5 +1,6 @@
 asset 'angular'
 asset 'angular-route'
+asset 'angular-cookies'
 asset 'angular-spinner'
 asset 'es5-shim'
 asset 'bootstrap'

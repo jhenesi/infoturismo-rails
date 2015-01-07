@@ -4,7 +4,9 @@ angular.module('infoturismoApp').constant('routes', {
 		general: {
 			path: '#/',
 		},
-
+		login: {
+			path: '#/login'
+		},
 		//rutas Acceso al destino e infraestructura
 		acceso: {
 			path: '#/acceso',

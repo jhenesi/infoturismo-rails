@@ -13,6 +13,7 @@
 //= require jquery/dist/jquery
 //= require angular/angular
 //= require angular-route/angular-route
+//= require angular-cookies/angular-cookies
 //= require angular-rails-templates
 //= require spin.js/spin
 //= require angular-spinner/angular-spinner

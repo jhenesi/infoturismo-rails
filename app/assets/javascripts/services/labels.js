@@ -5,6 +5,11 @@ angular.module('infoturismoApp').service('labels',['$sce', function($sce) {
 		
 	 	//Labels vista General
 	 	general: $sce.trustAsHtml('Observatorio'),
+
+	 	sesionExpiradaTitle: 'Su sesión ha expirado',
+	 	sesionExpiradaText: 'Inicie sesión de nuevo por favor',
+	 	credencialesInvalidasTitle:'Credenciales inválidas',
+	 	credencialesInvalidasText: 'Nombre de usuario o contraseña no validos',
 	 	
 	 	//Labels Acceso al destino e infraestructura
 	 	acceso: $sce.trustAsHtml('Acceso al Destino e Infraestructura'),
@@ -115,6 +120,13 @@ angular.module('infoturismoApp').service('labels',['$sce', function($sce) {
 		filtroGenero: 'Agrupado por Genero',
 		filtroCompania: 'Agrupado por Con Quién Viaja',
 		filtroOcupacion: 'Agrupado por Ocupación',
-		filtroGrado: 'Agrupado por Grado Escolar'
+		filtroGrado: 'Agrupado por Grado Escolar',
+		filtroEdad: 'Agrupado por Edad',
+		filtroVisita: 'Agrupado por Ultima Visita',
+		filtroFrecuencia: 'Agrupado por Frecuencia de Visita',
+		filtroRegresar: 'Agrupado por Oportunidad de Regresar',
+		
+
+	
  	};
 }]);

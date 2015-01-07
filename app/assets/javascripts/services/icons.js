@@ -23,6 +23,8 @@ angular.module('infoturismoApp').constant('icons', {
 	pieChart: 'fa-pie-chart',
 	experienciaViaje: 'fa-star',
 	factores: 'fa-cubes',
+	sesionExpirada: 'fa-clock-o',
+	warning: 'fa fa-warning',
 	menu: {
 		general: 'fa fa-fw fa-globe',
 		acceso: 'fa fa-fw fa-taxi',

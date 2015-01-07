@@ -1,5 +1,6 @@
 Infoturismo::Application.routes.draw do
   root 'home#index'
+  post 'auth' => 'auth#authenticate'
   resources :overview
   resources :acceso do
   	collection do
@@ -66,9 +67,18 @@ Infoturismo::Application.routes.draw do
   end
   resources :experiencia do
     collection do
-      get 'experienciaViaje'
       get 'factores'
-      get 'EVobregon'
+    end
+  end
+  resources :experiencia_viaje do
+    collection do
+      get 'obregon'
+      get 'hospitalidad'
+      get 'naturales'
+      get 'actividades'
+      get 'emocion'
+      get 'diferente'
+      get 'disponibilidad'
     end
   end
   resources :imagen do

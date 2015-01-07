@@ -2,6 +2,8 @@ class TransporteEstacionamientoController < ApplicationController
 	def index
 		render json: ConsumoSurveyResult.get_TransporteEstacionamiento_data, status: 200
 	end
+
+	
 	def calidad
 		if params[:group_by].nil?
 			data = ConsumoSurveyResult.get_TransporteCalidad_data

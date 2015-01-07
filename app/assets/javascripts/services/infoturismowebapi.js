@@ -208,52 +208,52 @@ angular.module('infoturismoApp').service('infoturismoWebApi', ['$http', function
 			return $http.get('/experiencia');
 		},
 		getExperienciaViajeOverviewData: function() {
-			return $http.get('/experiencia/experienciaViaje');
+			return $http.get('/experiencia_viaje');
 		},
 		getExperienciaViajeObregonOverviewData: function(filter) {
-			return $http.get('/experiencia/experienciaViaje/obregon',{
+			return $http.get('/experiencia_viaje/obregon',{
 				params: {
 					group_by: filter
 				}
 			});
 		},
 		getExperienciaViajeHospitalidadOverviewData: function(filter) {
-			return $http.get('/experiencia/experienciaViaje/hospitalidad',{
+			return $http.get('/experiencia_viaje/hospitalidad',{
 				params: {
 					group_by: filter
 				}
 			});
 		},
 		getExperienciaViajeActividadesOverviewData: function(filter) {
-			return $http.get('/experiencia/experienciaViaje/actividades',{
+			return $http.get('/experiencia_viaje/actividades',{
 				params: {
 					group_by: filter
 				}
 			});
 		},
 		getExperienciaViajeEmocionOverviewData: function(filter) {
-			return $http.get('/experiencia/experienciaViaje/emocion',{
+			return $http.get('/experiencia_viaje/emocion',{
 				params: {
 					group_by: filter
 				}
 			});
 		},
 		getExperienciaViajeNaturalesOverviewData: function(filter) {
-			return $http.get('/experiencia/experienciaViaje/naturales',{
+			return $http.get('/experiencia_viaje/naturales',{
 				params: {
 					group_by: filter
 				}
 			});
 		},
 		getExperienciaViajeDiferenteOverviewData: function(filter) {
-			return $http.get('/experiencia/experienciaViaje/diferente',{
+			return $http.get('/experiencia_viaje/diferente',{
 				params: {
 					group_by: filter
 				}
 			});
 		},
 		getExperienciaViajeDisponibilidadOverviewData: function(filter) {
-			return $http.get('/experiencia/experienciaViaje/disponibilidad',{
+			return $http.get('/experiencia_viaje/disponibilidad',{
 				params: {
 					group_by: filter
 				}

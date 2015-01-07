@@ -3,7 +3,9 @@
 angular.module('infoturismoApp').controller('LayoutCtrl', [
     '$scope', 
     '$routeParams', 
-    '$location', 
+    '$location',
+    '$window',
+    'AuthEvents',
     'labels', 
     'icons', 
     'routes',
@@ -11,7 +13,9 @@ angular.module('infoturismoApp').controller('LayoutCtrl', [
     function (
         $scope, 
         $routeParams, 
-        $location, 
+        $location,
+        $window,
+        AuthEvents,
         labels, 
         icons, 
         routes,
@@ -84,7 +88,7 @@ angular.module('infoturismoApp').controller('LayoutCtrl', [
     	};
 
         $scope.$on('$routeChangeSuccess', function () {
-            var section = $location.url().split("/")[1];;
+            var section = $location.url().split("/")[1];
             
             $scope.activeItem = active[section];
         });
@@ -131,18 +135,7 @@ angular.module('infoturismoApp').controller('LayoutCtrl', [
             icon: filterMenuIcons.ocupacion,
             label: labels.ocupacion,
             id:"filter-ocupacion"
-        },/*{
-            activeClass: "{active: activeFilterItem == 9}",
-            icon: filterMenuIcons.estancia,
-            label: labels.estancia,
-            id:"filter-estancia"
-        },{
-            activeClass: "{active: activeFilterItem == 10}",
-            icon: filterMenuIcons.residencia,
-            label: labels.residencia,
-            id:"filter-residencia"
-        },*/
-        {
+        }, {
             activeClass: "{active: activeFilterItem == 11}",
             icon: filterMenuIcons.grado,
             label: labels.grado,
@@ -152,12 +145,7 @@ angular.module('infoturismoApp').controller('LayoutCtrl', [
             icon: filterMenuIcons.oportunidad,
             label: labels.oportunidad,
             id:"filter-oportunidad"
-        }/*,{
-            activeClass: "{active: activeFilterItem == 13}",
-            icon: filterMenuIcons.gasto,
-            label: labels.gasto,
-            id:"filter-gasto"
-        }*/];
+        }];
 
         var filterActive = {};
 
@@ -194,5 +182,19 @@ angular.module('infoturismoApp').controller('LayoutCtrl', [
         $scope.$watch('filters.filterBy', function() {
             $scope.toggleFilters();
         });
+
+        $scope.showLogin = false;
+
+        $scope.$on(AuthEvents.notAuthenticated, function() {
+            $scope.showLogin = true;
+        });
+
+        $scope.$on(AuthEvents.sessionTimeout, function() {
+            $scope.showLogin = true;
+        });
+
+        $scope.$on(AuthEvents.notAuthorized, function() {
+            $scope.showLogin = true;
+        });  
     }
 ]);

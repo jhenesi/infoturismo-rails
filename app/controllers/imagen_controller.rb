@@ -43,7 +43,7 @@ class ImagenController < ApplicationController
 		if params[:group_by].nil?
 			data = ImagenSurveyResult.get_limpieza_data
 		else
-			data = ImagenSurveyResult.get_senalamiento_data_grouped(params[:group_by])
+			data = ImagenSurveyResult.get_limpieza_data_grouped(params[:group_by])
 		end
 
 		render json: data, status: 200

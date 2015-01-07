@@ -37,15 +37,15 @@ angular.module('infoturismoApp').controller('FirstCtrl', [
 		    acceso.breadcrumb.addCrumb(crumbs.getAcceso()),
 
 
-		    acceso.rutas['Señalamiento para Arribar'] = 
+		    acceso.rutas['SeñalamientoparaArribar'] = 
 		    	routes.acceso.senalamiento.path;
-			acceso.rutas['Opciones de Transporte para Arribar'] = 
+			acceso.rutas['OpcionesdeTransporteparaArribar'] = 
 				routes.acceso.opciones.path;
-			acceso.rutas['Calidad de la Infraestructura de Acceso'] = 
+			acceso.rutas['CalidaddelaInfraestructuradeAcceso'] = 
 				routes.acceso.calidad.path;
-			acceso.rutas['Mantenimiento y Calidad del Medio de Transporte'] = 
+			acceso.rutas['MantenimientoyCalidaddelMediodeTransporte'] = 
 				routes.acceso.mantenimiento.path;
-			acceso.rutas['Atención del personal de Transporte'] = 
+			acceso.rutas['AtencióndelpersonaldeTransporte'] = 
 				routes.acceso.atencion.path;
 
 	//Atractivos
@@ -60,17 +60,17 @@ angular.module('infoturismoApp').controller('FirstCtrl', [
  			atractivos.breadcrumb = crumbs.getGeneral();
 		    atractivos.breadcrumb.addCrumb(crumbs.getAtractivos()),
 			
-			atractivos.rutas['Atractivos y los Servicios'] = 
+			atractivos.rutas['AtractivosylosServicios'] = 
 		    	routes.atractivos.atractivosServicios.path;
-			atractivos.rutas['Conservacion de los atractivos'] = 
+			atractivos.rutas['Conservaciondelosatractivos'] = 
 				routes.atractivos.atractivosConservacion.path;
-			atractivos.rutas['Variedad de los atractivos'] = 
+			atractivos.rutas['Variedaddelosatractivos'] = 
 				routes.atractivos.atractivosVariedad.path;
-			atractivos.rutas['Calidad de los atractivos'] = 
+			atractivos.rutas['Calidaddelosatractivos'] = 
 				routes.atractivos.atractivosCalidad.path;
-			atractivos.rutas['Conservacion de los atractivos culturales'] = 
+			atractivos.rutas['Conservaciondelosatractivosculturales'] = 
 				routes.atractivos.atractivosCulturales.path;
-			atractivos.rutas['Conservacion de los atractivos naturales'] = 
+			atractivos.rutas['Conservaciondelosatractivosnaturales'] = 
 				routes.atractivos.atractivosNaturales.path;
 
 
@@ -89,13 +89,13 @@ angular.module('infoturismoApp').controller('FirstCtrl', [
 				.addCrumb(crumbs.getConsumo())
 				.addCrumb(crumbs.getHospedaje());
 
-			consumoHospedaje.rutas['Percepción General'] = 
+			consumoHospedaje.rutas['PercepciónGeneral'] = 
 	        	routes.consumo.hospedaje.percepcion.path;
 	      	consumoHospedaje.rutas['Limpieza'] = 
 	        	routes.consumo.hospedaje.limpieza.path;
-	      	consumoHospedaje.rutas['Atención del personal'] = 
+	      	consumoHospedaje.rutas['Atencióndelpersonal'] = 
 	        	routes.consumo.hospedaje.atencion.path;
-	      	consumoHospedaje.rutas['Facilidad de Elección de Opción de Hospedaje'] = 
+	      	consumoHospedaje.rutas['FacilidaddeEleccióndeOpcióndeHospedaje'] = 
 	        	routes.consumo.hospedaje.facilidadEleccion.path;
 
 
@@ -114,9 +114,9 @@ angular.module('infoturismoApp').controller('FirstCtrl', [
 				.addCrumb(crumbs.getConsumo())
 				.addCrumb(crumbs.getAlimentacion());
 
-			alimentos.rutas['Experiencia del consumo de alimentos y bebidas'] = 
+			alimentos.rutas['Experienciadelconsumodealimentosybebidas'] = 
 	        	routes.consumo.alimentacion.experiencia.path;
-	      	alimentos.rutas['Calidad de los alimentos y bebidas'] = 
+	      	alimentos.rutas['Calidaddelosalimentosybebidas'] = 
 	        	routes.consumo.alimentacion.calidad.path;
 	      	alimentos.rutas['Limpieza/Higiene'] = 
 	        	routes.consumo.alimentacion.limpieza.path;
@@ -137,11 +137,11 @@ angular.module('infoturismoApp').controller('FirstCtrl', [
 				.addCrumb(crumbs.getConsumo())
 				.addCrumb(crumbs.getExcursion());
 
-			excursion.rutas['Servicios de excursion/turisticos'] = 
+			excursion.rutas['Serviciosdeexcursion/turisticos'] = 
 	        	routes.consumo.servicioExcursion.servicios.path;
-	      	excursion.rutas['Calidad de los servicios de excursion/turisticos'] = 
+	      	excursion.rutas['Calidaddelosserviciosdeexcursion/turisticos'] = 
 	        	routes.consumo.servicioExcursion.calidad.path;
-	      	excursion.rutas['Atencion del personal'] = 
+	      	excursion.rutas['Atenciondelpersonal'] = 
 	        	routes.consumo.servicioExcursion.atencion.path;
 
 
@@ -161,13 +161,13 @@ angular.module('infoturismoApp').controller('FirstCtrl', [
 				.addCrumb(crumbs.getConsumo())
 				.addCrumb(crumbs.getTransporte());
 
-			transp.rutas['Calidad el trasporte local'] = 
+			transp.rutas['Calidadeltrasportelocal'] = 
 	        	routes.consumo.transporteEstacionamiento.calidad.path;
-	      	transp.rutas['Atencion del personal del servicio'] = 
+	      	transp.rutas['Atenciondelpersonaldelservicio'] = 
 	        	routes.consumo.transporteEstacionamiento.atencion.path;
-	      	transp.rutas['Disponibilidad del trasporte'] = 
+	      	transp.rutas['Disponibilidaddeltrasporte'] = 
 			routes.consumo.transporteEstacionamiento.disponibilidad.path;
-			transp.rutas['Disponibilidad de estacionamiento'] = 
+			transp.rutas['Disponibilidaddeestacionamiento'] = 
 			routes.consumo.transporteEstacionamiento.disponibilidadEstacionamiento.path;
 
 
@@ -193,7 +193,7 @@ angular.module('infoturismoApp').controller('FirstCtrl', [
 		    	routes.costo.hospedaje.path;			
 		    costo.rutas['Transporte'] = 				
 		    	routes.costo.transporte.path;			
-		    costo.rutas['Alimentos y bebidas'] = 				
+		    costo.rutas['Alimentosybebidas'] = 				
 		    	routes.costo.alimentos.path;			
 		    costo.rutas['Excursion/turistico'] = 				
 		    	routes.costo.excursion.path;			
@@ -215,56 +215,20 @@ angular.module('infoturismoApp').controller('FirstCtrl', [
 				.addCrumb(crumbs.getExperiencia())
 				.addCrumb(crumbs.getExperienciaViaje());
 
-			experienciaViaje.rutas['Experiencia de viaje a Cd. Obregon'] = 
+			experienciaViaje.rutas['ExperienciadeviajeaCd.Obregon'] = 
 	        	routes.experiencia.experienciaViaje.obregon.path;
-	      	experienciaViaje.rutas['Hospitalidad de los residentes que no trabajan en la industria'] = 
+	      	experienciaViaje.rutas['Hospitalidaddelosresidentesquenotrabajanenlaindustria'] = 
 	        	routes.experiencia.experienciaViaje.hospitalidad.path;
-	      	experienciaViaje.rutas['Variedad de actividades recreativas'] = 
+	      	experienciaViaje.rutas['Variedaddeactividadesrecreativas'] = 
 	        	routes.experiencia.experienciaViaje.actividades.path;
-	      	experienciaViaje.rutas['Emocion de visitar este sitio'] = 
+	      	experienciaViaje.rutas['Emociondevisitarestesitio'] = 
 	        	routes.experiencia.experienciaViaje.emocion.path;
-	      	experienciaViaje.rutas['Visitar los sitios naturales/culturales'] = 
+	      	experienciaViaje.rutas['Visitarlossitiosnaturales/culturales'] = 
 	        	routes.experiencia.experienciaViaje.naturales.path;
-	      	experienciaViaje.rutas['Ofrece una experiencia diferente'] = 
+	      	experienciaViaje.rutas['Ofreceunaexperienciadiferente'] = 
 	        	routes.experiencia.experienciaViaje.diferente.path;	
-	      	experienciaViaje.rutas['Disponibilidad de informacion turistica'] = 
+	      	experienciaViaje.rutas['Disponibilidaddeinformacionturistica'] = 
 	        	routes.experiencia.experienciaViaje.disponibilidad.path;	
-
-	        	/*//factores
-	        config['/experiencia/factores'] = {
-				title: labels.factores,
-        		icon: icons.experiencia,
-        		rutas: {},
-        		getData: infoturismoWebApi.getFactoresOverviewData
-			};
-
-			var factores = config['/experiencia/factores'];
-
-			factores.breadcrumb = crumbs.getGeneral();
-			factores.breadcrumb
-				.addCrumb(crumbs.getExperiencia())
-				.addCrumb(crumbs.getFactores());
-
-			factores.rutas['Recomendaciones'] = 
-	        	routes.experiencia.factores.recomendaciones.path;
-	      	factores.rutas['Conocimiento previo'] = 
-	        	routes.experiencia.factores.conocimiento.path;
-	      	factores.rutas['Cercania del lugar de origen'] = 
-	        	routes.experiencia.factores.cercania.path;
-	      	factores.rutas['Precios'] = 
-	        	routes.experiencia.factores.precios.path;	
-	      	factores.rutas['Disponibilidad de tiempo'] = 
-	        	routes.experiencia.factores.disponibilidad.path;
-	        factores.rutas['Diversidad de actividades'] = 
-	        	routes.experiencia.factores.diversidad.path;
-	        factores.rutas['Interes de conocer nuevos lugares'] = 
-	        	routes.experiencia.factores.interes.path;
-	        factores.rutas['Salud'] = 
-	        	routes.experiencia.factores.salud.path;
-	        factores.rutas['Trabajo'] = 
-	        	routes.experiencia.factores.trabajo.path;
-	        factores.rutas['Otro'] = 
-	        	routes.experiencia.factores.otro.path;*/
 
 	        //Imagen
 			config['/imagen'] = {
@@ -277,15 +241,15 @@ angular.module('infoturismoApp').controller('FirstCtrl', [
  			imagen.breadcrumb = crumbs.getGeneral();
 		    imagen.breadcrumb.addCrumb(crumbs.getImagen()),
 			
-			imagen.rutas['Percepcion de seguridad'] = 
+			imagen.rutas['Percepciondeseguridad'] = 
 		    	routes.imagen.percepciones.path;
-			imagen.rutas['Imagen de los sitios naturales o culturales'] = 
+			imagen.rutas['Imagendelossitiosnaturalesoculturales'] = 
 				routes.imagen.imagenes.path;
-			imagen.rutas['Vendedores ambulantes'] = 
+			imagen.rutas['Vendedoresambulantes'] = 
 				routes.imagen.ambulantes.path;
-			imagen.rutas['Transito vehicular'] = 
+			imagen.rutas['Transitovehicular'] = 
 				routes.imagen.transito.path;
-			imagen.rutas['Limpieza de calles y areas publicas'] = 
+			imagen.rutas['Limpiezadecallesyareaspublicas'] = 
 				routes.imagen.limpieza.path;
 
 
@@ -300,13 +264,13 @@ angular.module('infoturismoApp').controller('FirstCtrl', [
  			satisfaccion.breadcrumb = crumbs.getGeneral();
 		    satisfaccion.breadcrumb.addCrumb(crumbs.getSatisfaccion()),
 			
-			satisfaccion.rutas['Nivel de satisfaccion'] = 
+			satisfaccion.rutas['Niveldesatisfaccion'] = 
 		    	routes.satisfaccion.nivelSatisfaccion.path;
-			satisfaccion.rutas['Cumplimiento de expectativas'] = 
+			satisfaccion.rutas['Cumplimientodeexpectativas'] = 
 				routes.satisfaccion.expectativas.path;
-			satisfaccion.rutas['Disposicion de visitarnos nuevamente'] = 
+			satisfaccion.rutas['Disposiciondevisitarnosnuevamente'] = 
 				routes.satisfaccion.disposicion.path;
-			satisfaccion.rutas['Recomendaria a su amigos y familares visitarnos'] = 
+			satisfaccion.rutas['Recomendariaasuamigosyfamilaresvisitarnos'] = 
 				routes.satisfaccion.recomendacion.path;
 
 			return config[route];
@@ -320,8 +284,10 @@ angular.module('infoturismoApp').controller('FirstCtrl', [
       	$scope.navegacion = config.breadcrumb;
 
       	$scope.onLabelClick = function(e){
+      		var labelText = angular.element(e.currentTarget).text().replace(/ /g,'').split(':')[0];
+      		
         	$window.location = config
-          		.rutas[angular.element(e.target).text()];
+          		.rutas[labelText];
       	};
 
 		config.getData()

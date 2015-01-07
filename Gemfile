@@ -4,12 +4,12 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlserver as the database for Active Record
-gem 'activerecord-sqlserver-adapter'
+#gem 'activerecord-sqlserver-adapter'
 
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
+gem 'sqlite3'
 
-gem 'tiny_tds', '0.6.2'
+#gem 'tiny_tds', '0.6.2'
 
 #gem 'ruby-odbc'
 
@@ -44,6 +44,8 @@ end
 gem 'bower-rails'
 
 gem 'angular-rails-templates'
+
+gem 'jwt'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

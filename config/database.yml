@@ -1,22 +1,22 @@
-#development:
+# development:
 #  adapter: sqlserver
 #  mode: ODBC
 #  dsn: Driver={SQL Server};Server=uteow8i6hq.database.windows.net;Uid=usr_db_infoturismo_owner@uteow8i6hq.database.windows.net;Pwd=Info-2014;Database=db_infoturismo_survey
 #  azure: true
 
-development:
-  adapter: sqlserver
-  encoding: utf8
-  reconnect: false
-  database: infoturismo
-  username: ruby_u
-  password: ruby_u_pass
-  timeout: 25
-  dataserver: NVK-MOB-0061
-  port: 1433
+# development:
+#   adapter: sqlserver
+#   encoding: utf8
+#   reconnect: false
+#   database: infoturismo
+#   username: ruby_u
+#   password: ruby_u_pass
+#   timeout: 25
+#   dataserver: NVK-MOB-0061
+#   port: 1433
 
- # development:
- #   adapter: sqlite3
- #   database: db/infoturismo.sqlite3
- #   pool: 5
- #   timeout: 5000
+ development:
+   adapter: sqlite3
+   database: db/infoturismo.sqlite3
+   pool: 5
+   timeout: 5000

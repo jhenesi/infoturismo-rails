@@ -73,7 +73,7 @@ def self.get_percepcion_data()
 	         #{FILTER_COLUMNS[group_by]} as filtro
 			 FROM tbl_Results_v1
 			 GROUP BY CASE
-	      		WHEN [F16(F1601)] >= 1 AND [F16(F1601) <= 2 THEN 'muy_baja'
+	      		WHEN [F16(F1601)] >= 1 AND [F16(F1601)]<= 2 THEN 'muy_baja'
 	           	WHEN [F16(F1601)] >= 3 AND [F16(F1601)] <= 4 THEN 'baja'
 	           	WHEN [F16(F1601)] >= 5 AND [F16(F1601)] <= 6 THEN 'media'
 	           	WHEN [F16(F1601)] >= 9 AND [F16(F1601)] <= 10 THEN 'muy_alta'
@@ -148,7 +148,7 @@ def self.get_percepcion_data()
 	         #{FILTER_COLUMNS[group_by]} as filtro
 			 FROM tbl_Results_v1
 			 GROUP BY CASE
-	      		WHEN [F16(F1602)] >= 1 AND [F16(F1602) <= 2 THEN 'muy_baja'
+	      		WHEN [F16(F1602)] >= 1 AND [F16(F1602)] <= 2 THEN 'muy_baja'
 	           	WHEN [F16(F1602)] >= 3 AND [F16(F1602)] <= 4 THEN 'baja'
 	           	WHEN [F16(F1602)] >= 5 AND [F16(F1602)] <= 6 THEN 'media'
 	           	WHEN [F16(F1602)] >= 9 AND [F16(F1602)] <= 10 THEN 'muy_alta'
@@ -221,7 +221,7 @@ def self.get_percepcion_data()
 	         #{FILTER_COLUMNS[group_by]} as filtro
 			 FROM tbl_Results_v1
 			 GROUP BY CASE
-	      		WHEN [F16(F1603)] >= 1 AND [F16(F1603) <= 2 THEN 'muy_baja'
+	      		WHEN [F16(F1603)] >= 1 AND [F16(F1603)]<= 2 THEN 'muy_baja'
 	           	WHEN [F16(F1603)] >= 3 AND [F16(F1603)] <= 4 THEN 'baja'
 	           	WHEN [F16(F1603)] >= 5 AND [F16(F1603)] <= 6 THEN 'media'
 	           	WHEN [F16(F1603)] >= 9 AND [F16(F1603)] <= 10 THEN 'muy_alta'
@@ -295,7 +295,7 @@ def self.get_percepcion_data()
 	         #{FILTER_COLUMNS[group_by]} as filtro
 			 FROM tbl_Results_v1
 			 GROUP BY CASE
-	      		WHEN [F16(F1604)] >= 1 AND [F16(F1604) <= 2 THEN 'muy_baja'
+	      		WHEN [F16(F1604)] >= 1 AND [F16(F1604)] <= 2 THEN 'muy_baja'
 	           	WHEN [F16(F1604)] >= 3 AND [F16(F1604)] <= 4 THEN 'baja'
 	           	WHEN [F16(F1604)] >= 5 AND [F16(F1604)] <= 6 THEN 'media'
 	           	WHEN [F16(F1604)] >= 9 AND [F16(F1604)] <= 10 THEN 'muy_alta'
@@ -369,7 +369,7 @@ def self.get_limpieza_data()
 	         #{FILTER_COLUMNS[group_by]} as filtro
 			 FROM tbl_Results_v1
 			 GROUP BY CASE
-	      		WHEN [F16(F1605)] >= 1 AND [F16(F1605) <= 2 THEN 'muy_baja'
+	      		WHEN [F16(F1605)] >= 1 AND [F16(F1605)] <= 2 THEN 'muy_baja'
 	           	WHEN [F16(F1605)] >= 3 AND [F16(F1605)] <= 4 THEN 'baja'
 	           	WHEN [F16(F1605)] >= 5 AND [F16(F1605)] <= 6 THEN 'media'
 	           	WHEN [F16(F1605)] >= 9 AND [F16(F1605)] <= 10 THEN 'muy_alta'

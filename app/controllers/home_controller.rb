@@ -5,7 +5,7 @@ class HomeController < ApplicationController
 
   	if decoded_auth_token == nil
 		redirect_to :controller => 'auth', :action => 'index'
-	end 
+	end
 
 	rescue
   		redirect_to :controller => 'auth', :action => 'index'

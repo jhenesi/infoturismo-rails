@@ -26,6 +26,7 @@ angular.module('infoturismoApp').controller('AuthCtrl', [
 		$scope.credentials = {};
 
 		$scope.login = function() {
+			AuthToken.remove();
 			Authentication.login($scope.credentials.username, $scope.credentials.password);
 		};
 

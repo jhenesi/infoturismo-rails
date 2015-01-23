@@ -5,6 +5,7 @@ angular.module('infoturismoApp').controller('LayoutCtrl', [
     '$routeParams', 
     '$location',
     '$window',
+    'AuthToken',
     'AuthEvents',
     'labels', 
     'icons', 
@@ -15,6 +16,7 @@ angular.module('infoturismoApp').controller('LayoutCtrl', [
         $routeParams, 
         $location,
         $window,
+        AuthToken,
         AuthEvents,
         labels, 
         icons, 
@@ -198,6 +200,11 @@ angular.module('infoturismoApp').controller('LayoutCtrl', [
         $scope.$on(AuthEvents.notAuthorized, function() {
             $window.location.href = 'home';
             //$scope.showLogin = true;
-        });  
+        }); 
+
+        $scope.logout = function() {
+            AuthToken.remove();
+            $window.location.href = '/';
+        };
     }
 ]);

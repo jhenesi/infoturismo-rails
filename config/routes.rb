@@ -1,5 +1,6 @@
 Infoturismo::Application.routes.draw do
-  root 'home#index'
+  root 'auth#index'
+  get 'home' => 'home#index'
   post 'auth' => 'auth#authenticate'
   resources :overview
   resources :acceso do

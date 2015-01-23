@@ -4,8 +4,7 @@ angular
   .module('infoturismoApp', [
     'ngRoute',
     'ngCookies',
-    'templates',
-    'angularSpinner'
+    'templates'
   ])
   .config(function ($routeProvider) {
     $routeProvider

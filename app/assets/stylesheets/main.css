@@ -396,10 +396,10 @@ ul.alert-dropdown {
     width:100%;
     padding-bottom:20px;
 }
-.login_modal_header, .login_modal_footer {
+/*.login_modal_header, .login_modal_footer {
     background: #222 !important;
     color:#fff;
-}
+}*/
 .modal-register-btn {
     margin: 4% 33% 2% 33% ;
     width:100%;

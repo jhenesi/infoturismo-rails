@@ -16,7 +16,6 @@
 //= require angular-cookies/angular-cookies
 //= require angular-rails-templates
 //= require spin.js/spin
-//= require angular-spinner/angular-spinner
 //= require bootstrap/dist/js/bootstrap
 //= require highcharts/highcharts
 //= require highcharts/highcharts-more

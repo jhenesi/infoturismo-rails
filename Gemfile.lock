@@ -46,7 +46,7 @@ GEM
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
-    json (1.8.1)
+    json (1.8.2)
     jwt (1.2.0)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -56,7 +56,7 @@ GEM
     multi_json (1.10.1)
     polyglot (0.3.5)
     rack (1.5.2)
-    rack-test (0.6.2)
+    rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.0.0)
       actionmailer (= 4.0.0)
@@ -74,7 +74,6 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
-    ruby-odbc (0.99995)
     sass (3.2.19)
     sass-rails (4.0.5)
       railties (>= 4.0.0, < 5.0)
@@ -101,7 +100,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.42)
-    uglifier (2.6.1)
+    uglifier (2.7.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
 
@@ -115,7 +114,6 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jwt
   rails (= 4.0.0)
-  ruby-odbc
   sass-rails (~> 4.0.0)
   sdoc
   sqlite3

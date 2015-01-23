@@ -183,18 +183,21 @@ angular.module('infoturismoApp').controller('LayoutCtrl', [
             $scope.toggleFilters();
         });
 
-        $scope.showLogin = false;
+        //$scope.showLogin = false;
 
         $scope.$on(AuthEvents.notAuthenticated, function() {
-            $scope.showLogin = true;
+            $window.location.href = 'home';
+            //$scope.showLogin = true;
         });
 
         $scope.$on(AuthEvents.sessionTimeout, function() {
-            $scope.showLogin = true;
+            $window.location.href = 'home';
+            //$scope.showLogin = true;
         });
 
         $scope.$on(AuthEvents.notAuthorized, function() {
-            $scope.showLogin = true;
+            $window.location.href = 'home';
+            //$scope.showLogin = true;
         });  
     }
 ]);

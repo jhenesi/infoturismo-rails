@@ -3,6 +3,9 @@ class AuthController < ApplicationController
 
   	skip_before_action :authenticate_request 
 
+    def index
+    end
+
   	def authenticate
       puts 'auth'
     	user = User.find_by_credentials(params[:username], params[:password])

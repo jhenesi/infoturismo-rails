@@ -15,10 +15,7 @@
 //= require angular-route/angular-route
 //= require angular-cookies/angular-cookies
 //= require angular-rails-templates
-//= require spin.js/spin
 //= require bootstrap/dist/js/bootstrap
 //= require highcharts/highcharts
-//= require highcharts/highcharts-more
-//= require highcharts/modules/exporting
 //= require blockui/jquery.blockUI
 //= require_tree .

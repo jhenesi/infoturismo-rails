@@ -310,12 +310,12 @@ angular
   })
 
   .config(function ($httpProvider) {
-    $httpProvider.interceptors.push(function($q, $injector, blockui, icons, labels) {
+    $httpProvider.interceptors.push(function($q, $injector, blockui) {
       return {
         'request': function(config) {
           blockui.mask();
 
-          var AuthToken = $injector.get("AuthToken");
+          var AuthToken = $injector.get('AuthToken');
           var token = AuthToken.get();
 
           config.headers = config.headers || {};
@@ -323,7 +323,7 @@ angular
           config.timeout = $q.defer().promise;
         
           if (token) {
-            config.headers.Authorization = "Bearer " + token;
+            config.headers.Authorization = 'Bearer ' + token;
           }
 
           return config || $q.when(config);
@@ -339,11 +339,11 @@ angular
         'responseError': function(response) {
           blockui.demask();
 
-          if(response.status == 419) {
-            $injector.get("AuthToken").remove();
+          if(response.status === 419) {
+            $injector.get('AuthToken').remove();
           }
 
-          if(response.status != 401 && response.status != 403 && response.status != 419) {
+          if(response.status !== 401 && response.status !== 403 && response.status !== 419) {
             blockui.showError();
           }
             

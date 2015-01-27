@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('infoturismoApp').directive('chartRadar', function () {
+angular.module('infoturismoApp').directive('chartRadar', function() {
     return {
         scope: {
             data: '=',
@@ -10,14 +10,16 @@ angular.module('infoturismoApp').directive('chartRadar', function () {
         template: '<div class="chart-container"></div>',
         replace: true,
         link: function(scope, el, attrs) {
-            if(scope.isRendered === undefined) 
+            if(scope.isRendered === undefined) {
                 scope.isRendered = false;
+            }
 
             var draw = function(el, categories, seriesData) {
                 var series, chart, labels, tooltipLabel;
 
-                if(!seriesData || !categories)
+                if(!seriesData || !categories) {
                     return;
+                }
 
                 series = seriesData.map(function(item) {
                     return {

@@ -20,8 +20,7 @@ angular.module('infoturismoApp').controller('AuthCtrl', [
 		AuthEvents,
 		AuthToken,
 		blockui, 
-		labels,
-		infoturismoWebApi
+		labels
 	) {
 		$scope.credentials = {};
 

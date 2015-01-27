@@ -17,5 +17,6 @@
 //= require angular-rails-templates
 //= require bootstrap/dist/js/bootstrap
 //= require highcharts/highcharts
+//= require highcharts/highcharts-more
 //= require blockui/jquery.blockUI
 //= require_tree .

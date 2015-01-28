@@ -10,7 +10,7 @@ angular.module('infoturismoApp').controller('AuthCtrl', [
 	'AuthToken',
 	'blockui', 
 	'labels',
-	'infoturismoWebApi',
+	'assets',
 	function(
 		$rootScope, 
 		$scope, 
@@ -20,8 +20,10 @@ angular.module('infoturismoApp').controller('AuthCtrl', [
 		AuthEvents,
 		AuthToken,
 		blockui, 
-		labels
+		labels,
+		assets
 	) {
+		$scope.logo = assets.logo;
 		$scope.credentials = {};
 
 		$scope.login = function() {

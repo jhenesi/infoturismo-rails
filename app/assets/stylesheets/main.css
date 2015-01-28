@@ -447,6 +447,19 @@ ul.alert-dropdown {
 .login_modal_footer {
     margin-top:5px;
 }
+.login_modal_header {
+    background-color: #891414;
+}
+.login_modal_header > div {
+    width: 268px;
+    padding-bottom: 10px;
+}
+.login_modal_header > h3 {
+    color: #FFF;
+}
+.login_modal_header > div > img {
+    width: 100%;
+}
 .login_modal_header .modal-title {
     text-align: center;
     font-family:'Philosopher',

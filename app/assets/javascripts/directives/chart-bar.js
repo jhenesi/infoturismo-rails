@@ -4,7 +4,8 @@ angular.module('infoturismoApp').directive('chartBar', function () {
     return {
     	scope: {
             data: '=',
-            labelClick: '&'
+            labelClick: '&',
+            barClick: '&'
         },
     	restrict: 'E',
      	template: '<div class="chart-container"></div>',
@@ -70,12 +71,16 @@ angular.module('infoturismoApp').directive('chartBar', function () {
 			            },
 			            plotOptions: {
                             series: {
-                                stacking: 'normal'
-                            },
-                            bar: {
-                                events: {
-                                    legendItemClick: function () {
-                                        console.log(element.find(".highcharts-stack-labels > text").length);
+                                stacking: 'normal',
+                                cursor: 'pointer',
+                                point: {
+                                    events: {
+                                        click: function () {
+                                            scope.barClick({
+                                                category: this.category,
+                                                value: this.y
+                                            });
+                                        }
                                     }
                                 }
                             }

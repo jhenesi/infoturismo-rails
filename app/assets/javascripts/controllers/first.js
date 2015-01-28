@@ -290,6 +290,12 @@ angular.module('infoturismoApp').controller('FirstCtrl', [
           		.rutas[labelText];
       	};
 
+      	$scope.onBarClick = function(category, value) {
+      		var labelText = category.replace(/ /g,'');
+      		$window.location = config
+          		.rutas[labelText];
+      	}
+
 		config.getData()
       		.success(function(data, status, headers, config) {
           		var categories, values, serie;

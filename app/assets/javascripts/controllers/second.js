@@ -877,9 +877,29 @@ angular.module('infoturismoApp').controller('SecondCtrl', [
 			            	});
 			          	});
 
+                     var dataDict = {};
+
 			          	angular.forEach(Object.keys(series), function(keys, i) {
-			          		chartData.push(series[keys]);
+                        dataDict[series[keys].name] = series[keys];
 			          	});
+
+                     var o = [];
+
+                     if(dataDict['Muy Alta']) {
+                        chartData.push(dataDict['Muy Alta']);
+                     }
+                     if(dataDict['Alta']) {
+                        chartData.push(dataDict['Alta']);
+                     }
+                     if(dataDict['Media']) {
+                        chartData.push(dataDict['Media']);
+                     }
+                     if(dataDict['Baja']) {
+                        chartData.push(dataDict['Baja']);
+                     }
+                     if(dataDict['Muy Baja']) {
+                        chartData.push(dataDict['Muy Baja']);
+                     }
 
 			          	$scope.groupedData = {
 			          		categories: categories,

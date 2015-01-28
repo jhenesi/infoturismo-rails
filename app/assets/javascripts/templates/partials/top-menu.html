@@ -7,7 +7,7 @@
             </li>
         </ul>
     </li>
-    <li class="btn-filters clickable">
+    <li class="btn-filters clickable" ng-class="{'': !isFiltersToggled, 'open': isFiltersToggled}">
         <a id="filters-toggle" ng-click="toggleFilters()"><i class={{menuIcons.filtros}}></i></span></a>
     </li>
 </ul>

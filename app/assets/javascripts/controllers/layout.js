@@ -7,7 +7,8 @@ angular.module('infoturismoApp').controller('LayoutCtrl', [
     '$window',
     'AuthToken',
     'AuthEvents',
-    'labels', 
+    'labels',
+    'assets', 
     'icons', 
     'routes',
     'filters',
@@ -18,7 +19,8 @@ angular.module('infoturismoApp').controller('LayoutCtrl', [
         $window,
         AuthToken,
         AuthEvents,
-        labels, 
+        labels,
+        assets,
         icons, 
         routes,
         filters
@@ -84,6 +86,9 @@ angular.module('infoturismoApp').controller('LayoutCtrl', [
 
     	$scope.labels = labels;
     	$scope.menuIcons = icons.menu;
+        $scope.logo = assets.logo;
+        $scope.sponsors = assets.sponsors;
+        $scope.company = assets.company;
 
     	$scope.toggleFilters = function() {
     		$scope.isFiltersToggled = !$scope.isFiltersToggled;

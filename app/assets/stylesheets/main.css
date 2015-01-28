@@ -12,13 +12,51 @@ html, body{
 
 body {
     margin-top: 100px;
-    background-color: #222;
+    background-color: #891414;
+    color: #333;
 }
 
 @media(min-width:768px) {
     body {
         margin-top: 50px;
     }
+}
+
+.navbar-inverse {
+    background-color: #891414;
+    border-color: #610000;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+    background-color: #610000;
+}
+
+.navbar-inverse .navbar-collapse {
+    border-color: #390000;
+}
+
+.navbar-right {
+    margin-right: 0;
+}
+
+.top-nav > li > a:hover {
+    color: #fff;
+    background-color: #610000 !important;
+}
+
+.form-control:focus {
+    border-color: #D46060;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(233, 102, 107, 0.6);
+}
+
+.btn-primary {
+    background-color: #891414;
+    border-color: #610000;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+    background-color: #610000;
+    border-color: #610000;
 }
 
 #wrapper {
@@ -43,6 +81,10 @@ body {
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+}
+
+#sidebar-wrapper > div {
+    padding: 0;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -74,6 +116,7 @@ body {
     left: 15px;
     bottom: 20px;
     top: 250px;
+    padding-bottom: 40px;
 }
 
 .chart-row > div, 
@@ -98,6 +141,26 @@ body {
 
 .highcharts-tooltip > text > tspan[style*='font-family: FontAwesome'] {
     display: none;
+}
+
+.sponsors {
+    background: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-right: 0px;
+    padding-bottom: 5px;
+}
+.sponsors > div {
+    height: 45px;
+    width: 378px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 0px;
+}
+.sponsors > div > img {
+    height: 100%;
+    width: 100%;
 }
 
 @media(min-width:768px) {
@@ -154,6 +217,10 @@ body {
     .highcharts-axis-labels > text > tspan {
         display: block;
     }
+
+    .sponsors {
+        padding-right: 225px;
+    }
 }
 
 /* Top Navigation */
@@ -176,7 +243,7 @@ body {
 .top-nav>.open>a:hover,
 .top-nav>.open>a:focus {
     color: #fff;
-    background-color: #000;
+    background-color: #610000;
 }
 
 .top-nav>.open>.dropdown-menu {
@@ -240,7 +307,7 @@ ul.alert-dropdown {
         border: none;
         border-radius: 0;
         overflow-y: auto;
-        background-color: #222;
+        background-color: #891414;
     }
 
     .side-nav>li>a {
@@ -250,7 +317,7 @@ ul.alert-dropdown {
     .side-nav li a:hover,
     .side-nav li a:focus {
         outline: none;
-        background-color: #000 !important;
+        background-color: #610000 !important;
     }
 }
 
@@ -355,17 +422,19 @@ ul.alert-dropdown {
 
 .seleccion ul>li>a{
     display: block;
-    padding: 10px 15px 10px 10px;
+    padding: 10px 15px 10px 15px;
     text-decoration: none;
-    color: #777;
+    color: #333;
 }
 
 .seleccion li>a:hover{
-    color:#333;
+
+    background-color: #f5f5f5;
 }
 
 .seleccion li > a.active {
-    color:#080808;
+
+    background-color: #f5f5f5;
 }
 
 .panel-row {
@@ -429,4 +498,14 @@ ul.alert-dropdown {
     background-color: white;
     opacity: 1.0;
     filter: alpha(opacity=80);
+}
+.logo {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 37px;
+    padding-right: 37px;
+}
+.logo > img {
+    width: 150px;
+    height: 35px;
 }

@@ -163,17 +163,41 @@ body {
     width: 100%;
 }
 
+.company {
+    position: fixed;
+    top: 115px;
+    right: 10px;
+}
+.company > div {
+    width: 150px;
+}
+.company > div > img {
+    width: 100%;
+}
+
+.logo {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 7px;
+    padding-right: 37px;
+}
+.logo > img {
+    width: 150px;
+    height: 35px;
+}
+
+@media(min-width:768px) {
+}
+
 @media(min-width:768px) {
     #wrapper {
         padding-left: 225px;
         margin-top: -50px;
     }
-
     #page-wrapper {
         padding: 10px;
         padding-top: 60px;
     }
-
     #sidebar-wrapper {
         z-index: 1000;
         position: fixed;
@@ -191,7 +215,6 @@ body {
         -o-transition: all 0.5s ease;
         transition: all 0.5s ease;
     }
-
     #wrapper.toggled #sidebar-wrapper {
         margin-right: -400px;
         overflow-y: auto;
@@ -201,7 +224,6 @@ body {
         box-shadow: 0 6px 12px rgba(0,0,0,.175);
         -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
     }
-
     .chart-row {
         position: absolute; 
         right: 25px; 
@@ -209,19 +231,32 @@ body {
         bottom: 20px; 
         top: 225px;
     }
-
     .highcharts-axis-labels > text > tspan[style*='font-family: FontAwesome'] {
         display: none;
     }
-
     .highcharts-axis-labels > text > tspan {
         display: block;
     }
-
     .sponsors {
         padding-right: 225px;
     }
+    .company {
+        top: 67px;
+    }
+    .logo {
+        padding-top: 7px;
+        padding-bottom: 7px;
+        padding-left: 37px;
+        padding-right: 37px;
+    }
 }
+
+@media(min-width:991px) {
+    .company {
+        top: 80px;
+    }
+}
+
 
 /* Top Navigation */
 
@@ -309,139 +344,106 @@ ul.alert-dropdown {
         overflow-y: auto;
         background-color: #891414;
     }
-
     .side-nav>li>a {
         width: 225px;
     }
-
     .side-nav li a:hover,
     .side-nav li a:focus {
         outline: none;
         background-color: #610000 !important;
     }
 }
-
 .side-nav>li>ul {
     padding: 0;
 }
-
 .side-nav>li>ul>li>a {
     display: block;
     padding: 10px 15px 10px 38px;
     text-decoration: none;
     color: #999;
 }
-
 .side-nav>li>ul>li>a:hover {
     color: #fff;
 }
-
 /* Flot Chart Containers */
-
 .flot-chart {
     display: block;
     height: 400px;
 }
-
 .flot-chart-content {
     width: 100%;
     height: 100%;
 }
-
 /* Custom Colored Panels */
-
 .huge {
     font-size: 40px;
 }
-
 .panel-green {
     border-color: #5cb85c;
 }
-
 .panel-green .panel-heading {
     border-color: #5cb85c;
     color: #fff;
     background-color: #5cb85c;
 }
-
 .panel-green a {
     color: #5cb85c;
 }
-
 .panel-green a:hover {
     color: #3d8b3d;
 }
-
 .panel-red {
     border-color: #d9534f;
 }
-
 .panel-red .panel-heading {
     border-color: #d9534f;
     color: #fff;
     background-color: #d9534f;
 }
-
 .panel-red a {
     color: #d9534f;
 }
-
 .panel-red a:hover {
     color: #b52b27;
 }
-
 .panel-yellow {
     border-color: #f0ad4e;
 }
-
 .panel-yellow .panel-heading {
     border-color: #f0ad4e;
     color: #fff;
     background-color: #f0ad4e;
 }
-
 .panel-yellow a {
     color: #f0ad4e;
 }
-
 .panel-yellow a:hover {
     color: #df8a13;
 }
-
 .clickable {
     cursor: pointer;
 }
-
 .seleccion  ul{
     padding:0;
 }
-
 .seleccion ul>li{
     list-style:none;
 }
-
 .seleccion ul>li>a{
     display: block;
     padding: 10px 15px 10px 15px;
     text-decoration: none;
     color: #333;
 }
-
 .seleccion li>a:hover{
-
     background-color: #f5f5f5;
 }
-
 .seleccion li > a.active {
-
     background-color: #f5f5f5;
 }
-
 .panel-row {
     background: white;
 }
-
-
 .login_modal_footer {
     margin-top:5px;
 }
@@ -465,10 +467,6 @@ ul.alert-dropdown {
     width:100%;
     padding-bottom:20px;
 }
-/*.login_modal_header, .login_modal_footer {
-    background: #222 !important;
-    color:#fff;
-}*/
 .modal-register-btn {
     margin: 4% 33% 2% 33% ;
     width:100%;
@@ -499,13 +497,15 @@ ul.alert-dropdown {
     opacity: 1.0;
     filter: alpha(opacity=80);
 }
-.logo {
-    padding-top: 7px;
-    padding-bottom: 7px;
-    padding-left: 37px;
-    padding-right: 37px;
+
+.navbar-inverse .navbar-toggle {
+    border-color: #610000;
 }
-.logo > img {
-    width: 150px;
-    height: 35px;
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: #610000;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover {
+    background-color: #610000;
 }

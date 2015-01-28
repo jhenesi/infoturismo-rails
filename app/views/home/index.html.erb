@@ -4,7 +4,8 @@
 	<!-- Sidebar -->
 	<div ng-include="'partials/filter-menu.html'"></div>
 	<!-- Content -->
+	<div class="company" ng-hide="hideCompany"><div><img src="{{company}}"></div></div>
 	<div id="page-wrapper" ng-view="">
 	</div>
-	<div class="sponsors"><div><img src="{{sponsors}}"></div></div>
+	<div class="sponsors" ng-hide="hideSponsors"><div><img src="{{sponsors}}"></div></div>
 </div>

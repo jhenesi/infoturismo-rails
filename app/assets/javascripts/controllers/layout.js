@@ -89,13 +89,25 @@ angular.module('infoturismoApp').controller('LayoutCtrl', [
         $scope.logo = assets.logo;
         $scope.sponsors = assets.sponsors;
         $scope.company = assets.company;
+        $scope.hideCompany = false;
+        $scope.hideSponsors = false;
 
     	$scope.toggleFilters = function() {
     		$scope.isFiltersToggled = !$scope.isFiltersToggled;
     	};
 
         $scope.$on('$routeChangeSuccess', function () {
-            var section = $location.url().split("/")[1];
+            var location = $location.url();
+            var section = location.split("/")[1];
+
+            if(location === '/consumo' || location === '/experiencia') {
+                $scope.hideCompany = true;
+                $scope.hideSponsors = true;
+            }
+            else {
+                $scope.hideCompany = false;
+                $scope.hideSponsors = false;
+            }
             
             $scope.activeItem = active[section];
         });
@@ -194,17 +206,14 @@ angular.module('infoturismoApp').controller('LayoutCtrl', [
 
         $scope.$on(AuthEvents.notAuthenticated, function() {
             $window.location.href = 'home';
-            //$scope.showLogin = true;
         });
 
         $scope.$on(AuthEvents.sessionTimeout, function() {
             $window.location.href = 'home';
-            //$scope.showLogin = true;
         });
 
         $scope.$on(AuthEvents.notAuthorized, function() {
             $window.location.href = 'home';
-            //$scope.showLogin = true;
         }); 
 
         $scope.logout = function() {

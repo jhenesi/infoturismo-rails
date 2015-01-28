@@ -10,12 +10,12 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery/dist/jquery
-//= require angular/angular
-//= require angular-route/angular-route
-//= require angular-cookies/angular-cookies
+//= require jquery/dist/jquery.min
+//= require angular/angular.min
+//= require angular-route/angular-route.min
+//= require angular-cookies/angular-cookies.min
 //= require angular-rails-templates
-//= require bootstrap/dist/js/bootstrap
+//= require bootstrap/dist/js/bootstrap.min
 //= require highcharts/highcharts
 //= require highcharts/highcharts-more
 //= require blockui/jquery.blockUI
